@@ -4,8 +4,11 @@ import { Text, Flex } from "rebass";
 
 import Layout from "../components/layout";
 import Barcode from "../ui/Barcode";
+import Page404 from "../pages/404";
 
 export default ({ data }) => {
+  if (!data.allChouettos || !data.allGoogleSheetSuiviRow) return <Page404 />;
+
   const chouettos = data.allChouettos.edges[0].node;
   const piaf = data.allGoogleSheetSuiviRow.edges[0].node;
 
