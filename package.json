@@ -37,7 +37,24 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "release": "release-it"
+  },
+  "release-it": {
+    "increment": "conventional:angular",
+    "scripts": {
+      "changelog": "npx conventional-changelog -p angular -u | tail -n +3",
+      "beforeStage": "npx conventional-changelog -p angular -i CHANGELOG.md -s"
+    },
+    "git": {
+      "commitMessage": "chore: release ${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    }
   },
   "config": {
     "commitizen": {
@@ -46,6 +63,8 @@
   },
   "devDependencies": {
     "commitizen": "^3.0.7",
-    "cz-conventional-changelog": "^2.1.0"
+    "conventional-changelog-cli": "^2.0.12",
+    "cz-conventional-changelog": "^2.1.0",
+    "release-it": "^10.1.0"
   }
 }

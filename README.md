@@ -46,3 +46,7 @@ sa maintenance/reprise sur le long terme.
 ## Déploiement
 
 - `npm run build`
+
+## Release
+
+- `GITHUB_TOKEN="xxxxxx" npm run release`
