@@ -26,7 +26,7 @@ export default ({ data }) => {
 
       <Text>
         <Barcode textAlign="center" mb={2}>
-          2414890133171
+          {chouettos.barcode}
         </Barcode>
       </Text>
 
