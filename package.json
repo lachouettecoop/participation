@@ -2,7 +2,7 @@
   "name": "chouette-participation",
   "private": true,
   "description": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
