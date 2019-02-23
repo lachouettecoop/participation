@@ -1,3 +1,13 @@
+# [0.2.0](https://github.com/lachouettecoop/participation/compare/0.1.1...0.2.0) (2019-02-23)
+
+
+### Features
+
+* ajout d’un champ pour filtrer les Chouettos par nom ([996c202](https://github.com/lachouettecoop/participation/commit/996c202)), closes [#5](https://github.com/lachouettecoop/participation/issues/5)
+* ajout de la date de génération du site en pied de page ([140f636](https://github.com/lachouettecoop/participation/commit/140f636)), closes [#1](https://github.com/lachouettecoop/participation/issues/1)
+
+
+
 ## [0.1.1](https://github.com/lachouettecoop/participation/compare/0.1.0...0.1.1) (2019-02-23)
 
 
