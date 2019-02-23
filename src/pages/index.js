@@ -3,6 +3,7 @@ import { Link, useStaticQuery, graphql, navigate } from "gatsby";
 import { Box, Heading, Text, Flex } from "rebass";
 import { FaBarcode, FaArrowCircleRight } from "react-icons/fa";
 
+import useFuzzyList from "../hooks/useFuzzyList";
 import Layout from "../components/layout";
 import FormGroup from "../ui/FormGroup";
 import IconButton from "../ui/IconButton";
@@ -31,7 +32,12 @@ const IndexPage = () => {
     navigate(`/chouettos/${barcodeElement.current.value}`);
   };
 
-  React.useEffect(() => barcodeElement.current.focus());
+  React.useEffect(() => barcodeElement.current.focus(), [data]);
+
+  const [filteredChouettos, nameFilter, setNameFilter] = useFuzzyList(
+    data.allChouettos.edges,
+    { keys: ["node.firstname", "node.lastname"] }
+  );
 
   return (
     <Layout title="Contrôle de la Participation">
@@ -59,9 +65,18 @@ const IndexPage = () => {
       </Box>
 
       <Box my={6}>
-        <Heading>Liste (debug)</Heading>
+        <Heading>Liste nominative</Heading>
+        <FormGroup htmlFor="nameFilter" label="Chercher par nom/prénom">
+          <input
+            name="nameFilter"
+            type="text"
+            placeholder="Jean TIBOU"
+            onChange={e => setNameFilter(e.target.value)}
+            value={nameFilter}
+          />
+        </FormGroup>
         <Flex flexWrap="wrap" mt={4} justifyContent="space-between">
-          {data.allChouettos.edges.map(
+          {filteredChouettos.map(
             ({ node: { barcode, firstname, lastname } }) => (
               <Box
                 my={2}
