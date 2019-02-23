@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
+import { Text } from "rebass";
 
 import LCCTheme from "../LCCTheme";
 import PageHead from "../ui/PageHead";
@@ -15,6 +16,7 @@ const Layout = ({ children, title }) => (
       query={graphql`
         query SiteTitleQuery {
           site {
+            buildTime
             siteMetadata {
               title
             }
@@ -28,6 +30,21 @@ const Layout = ({ children, title }) => (
           <Container>
             <main>{children}</main>
           </Container>
+          <Text as="footer" mt={4} p={2} bg="paleyellow" fontSize={0}>
+            <Container>
+              <em>
+                Les informations publiées sur ce site sont celles en date du{" "}
+                {new Date(data.site.buildTime).toLocaleDateString("fr-FR", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit"
+                })}
+                .
+              </em>
+            </Container>
+          </Text>
         </>
       )}
     />
