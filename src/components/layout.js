@@ -7,6 +7,7 @@ import LCCTheme from "../LCCTheme";
 import PageHead from "../ui/PageHead";
 import Container from "../ui/Container";
 import Seo from "./seo";
+import FeedbackButton from "./FeedbackButton";
 
 import "./layout.css";
 
@@ -26,6 +27,7 @@ const Layout = ({ children, title }) => (
       render={data => (
         <>
           <Seo title={title} />
+          <FeedbackButton />
           <PageHead title={title || data.site.siteMetadata.title} />
           <Container>
             <main>{children}</main>
