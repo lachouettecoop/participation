@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import { FaQuestionCircle, FaWindowClose } from "react-icons/fa";
 import { Box, Button, Text } from "rebass";
-import Container from "../ui/Container";
-
-const FeedbackModal = () => (
-  <Container>
-    <Box>ICI UN FORMULAIRE</Box>
-  </Container>
-);
+import FeedbackModal from "./FeedbackModal";
 
 const FeedbackButton = () => {
-  const [opened, setOpened] = useState(true);
+  const [opened, setOpened] = useState(false);
   return (
     <Box
       bg="red"
@@ -25,6 +19,7 @@ const FeedbackButton = () => {
             width: 100vw;
             top: 0;
             left: 0;
+            overflow-y: auto;
           `
           : `
             transform: translateX(42%) rotate(-90deg);
