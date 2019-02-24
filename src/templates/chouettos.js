@@ -35,7 +35,7 @@ export default ({ data }) => {
           width={1 / 2}
           py={5}
           color="white"
-          bg={piaf.nbtafok === "OK" ? "green" : "red"}
+          bg={piaf.nbsemdepuisderniertaf <= 4 ? "green" : "orange"}
           textAlign="center"
         >
           <Text fontSize={8}>{piaf.nbsemdepuisderniertaf}</Text>
@@ -61,7 +61,13 @@ export default ({ data }) => {
           </Text>
         </Text>
       </Flex>
-      <Text width={1} py={5} color="white" bg="primary" textAlign="center">
+      <Text
+        width={1}
+        py={5}
+        color="white"
+        bg={piaf.nbtafok === "OK" ? "green" : "red"}
+        textAlign="center"
+      >
         <Text fontSize={8}>
           {piaf.nbtafeffectuesdepuisle2017} / {piaf.nbtafattendus}
         </Text>
