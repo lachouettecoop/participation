@@ -5,9 +5,10 @@ import FormGroup from "../ui/FormGroup";
 import ChouettosList from "./ChouettosList";
 
 const BrowseByName = ({ chouettos }) => {
+  const columns = 3;
   const [filteredChouettos, nameFilter, setNameFilter] = useFuzzyList(
     chouettos,
-    { keys: ["node.firstname", "node.lastname"] }
+    { keys: ["node.firstname", "node.lastname"], limit: columns * 10 }
   );
 
   return (
@@ -23,7 +24,7 @@ const BrowseByName = ({ chouettos }) => {
         />
       </FormGroup>
 
-      <ChouettosList chouettos={filteredChouettos} />
+      <ChouettosList chouettos={filteredChouettos} columns={columns} />
     </Box>
   );
 };
