@@ -62,8 +62,10 @@ export default ({ data }) => {
         </Text>
       </Flex>
       <Text width={1} py={5} color="white" bg="primary" textAlign="center">
-        <Text fontSize={8}>{piaf.nbtafeffectuesdepuisle2017}</Text>
-        <Text>PIAF effectuées depuis le 06/10/2017</Text>
+        <Text fontSize={8}>
+          {piaf.nbtafeffectuesdepuisle2017} / {piaf.nbtafattendus}
+        </Text>
+        <Text>PIAF effectuées depuis le 06/10/2017 vs PIAF attendues</Text>
         <Text fontSize={4}>{`dont ${
           piaf.nbtafeffectuesdepuisle2018
         } depuis le 01/09/2018`}</Text>
@@ -103,6 +105,7 @@ export const query = graphql`
 
           nbtafeffectuesdepuisle2017
           nbtafeffectuesdepuisle2018
+          nbtafattendus
         }
       }
     }
