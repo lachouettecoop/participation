@@ -1,15 +1,16 @@
 import React from "react";
-import { FaInfo } from "react-icons/fa";
-import { Box, Flex, Heading, Link, Text } from "rebass";
-import useZulip from "../hooks/useZulip";
+import { FaSpinner } from "react-icons/fa";
+import { Box, Heading, Text } from "rebass";
+import { useZulipBot } from "../hooks/zulip";
 import Container from "../ui/Container";
-import LoginForm from "./LoginForm";
-import Me from "./Zulip/Me";
 import SendMessageToStream from "./Zulip/SendMessageToStream";
 
 const FeedbackModal = () => {
-  const ZULIP_URL = "https://lachouettecoop.zulipchat.com/";
-  const [zulip, doLogin, doLogout] = useZulip(ZULIP_URL);
+  const zulip = useZulipBot(
+    process.env.GATSBY_ZULIP_URL,
+    process.env.GATSBY_ZULIP_BOT_EMAIL,
+    process.env.GATSBY_ZULIP_BOT_APIKEY
+  );
 
   return (
     <Container>
@@ -25,33 +26,14 @@ const FeedbackModal = () => {
 
         <hr />
         {zulip ? (
-          <>
-            <Me zulip={zulip} onLogout={doLogout} />
-            <SendMessageToStream
-              zulip={zulip}
-              stream="Grp - Bureau des Membres"
-            />
-          </>
+          <SendMessageToStream
+            zulip={zulip}
+            stream="Grp - Bureau des Membres"
+          />
         ) : (
-          <LoginForm onSubmit={doLogin}>
-            <Box bg="primary" p={4}>
-              <Text as="p">
-                Veuillez vous connecter avec vos identifiants{" "}
-                <Link href={ZULIP_URL}>Zulip</Link> pour pouvoir remonter une
-                information.
-              </Text>
-              <Flex justifyContent="space-between" alignItems="center">
-                <Text textAlign="center" mr={3}>
-                  <FaInfo size="2em" />
-                </Text>
-                <Text>
-                  Votre session sera automatiquement fermée lorsque vous
-                  fermerez votre navigateur. Pas la peine de penser à vous
-                  déconnecter !
-                </Text>
-              </Flex>
-            </Box>
-          </LoginForm>
+          <Text>
+            <FaSpinner /> Chargement en cours…
+          </Text>
         )}
       </Box>
     </Container>

@@ -2,7 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 import { useSessionStorage } from "react-use";
 import zulip from "zulip-js";
 
-const useZulip = (realm, sessionStorageKey = "zulip-user") => {
+export const useZulipUser = (realm, sessionStorageKey = "zulip-user") => {
   const [user, setUser] = useSessionStorage(sessionStorageKey);
   const [instance, setInstance] = useState(null);
   const doLogin = useCallback((username, password) => {
@@ -32,4 +32,21 @@ const useZulip = (realm, sessionStorageKey = "zulip-user") => {
   return [instance, doLogin, doLogout];
 };
 
-export default useZulip;
+export const useZulipBot = (realm, botUsername, botApiKey) => {
+  const [instance, setInstance] = useState(null);
+
+  useEffect(() => {
+    zulip({
+      username: botUsername,
+      apiKey: botApiKey,
+      realm
+    })
+      .then(setInstance)
+      .catch(e => {
+        // TODO: Gérer un message d’erreur en cas d’identifiants incorrects
+        console.log("pabon", e);
+      });
+  });
+
+  return instance;
+};
