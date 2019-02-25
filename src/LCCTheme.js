@@ -67,6 +67,11 @@ const theme = {
     secondary: {
       color: colors.primary,
       backgroundColor: colors.paleyellow
+    },
+    disabled: {
+      color: colors.white,
+      backgroundColor: colors.greyblue,
+      cursor: "not-allowed"
     }
   },
   cards: {
