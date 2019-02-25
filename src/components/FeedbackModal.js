@@ -5,6 +5,7 @@ import useZulip from "../hooks/useZulip";
 import Container from "../ui/Container";
 import LoginForm from "./LoginForm";
 import Me from "./Zulip/Me";
+import SendMessageToStream from "./Zulip/SendMessageToStream";
 
 const FeedbackModal = () => {
   const ZULIP_URL = "https://lachouettecoop.zulipchat.com/";
@@ -24,7 +25,13 @@ const FeedbackModal = () => {
 
         <hr />
         {zulip ? (
-          <Me zulip={zulip} onLogout={doLogout} />
+          <>
+            <Me zulip={zulip} onLogout={doLogout} />
+            <SendMessageToStream
+              zulip={zulip}
+              stream="Grp - Bureau des Membres"
+            />
+          </>
         ) : (
           <LoginForm onSubmit={doLogin}>
             <Box bg="primary" p={4}>

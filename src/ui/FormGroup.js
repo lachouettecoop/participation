@@ -1,21 +1,28 @@
 import React from "react";
 import { Box, Text } from "rebass";
 
-const OptionalInfo = () => (
-  <Text as="span" color="darkbrown" ml={2}>
+const OptionalInfo = ({ color }) => (
+  <Text as="span" color={color} ml={2}>
     (optionnel)
   </Text>
 );
 
-const FormGroup = ({ htmlFor, label, help, optional, children }) => (
+const FormGroup = ({
+  htmlFor,
+  label,
+  help,
+  optional,
+  children,
+  secondaryColor = "darkbrown"
+}) => (
   <Box my={3} alignItems="center" justifyContent="space-between">
     <Text>
       <label htmlFor={htmlFor}>
         {label}
-        {optional && <OptionalInfo />}
+        {optional && <OptionalInfo color={secondaryColor} />}
       </label>
       {help && (
-        <Text color="darkbrown" fontSize={1} css={{ fontStyle: "italic" }}>
+        <Text color={secondaryColor} fontSize={1} css={{ fontStyle: "italic" }}>
           {help}
         </Text>
       )}
