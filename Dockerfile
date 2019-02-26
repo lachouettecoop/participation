@@ -2,7 +2,7 @@ FROM node:11.10 as builder
 ARG VERSION=master
 WORKDIR /project
 RUN curl -L https://github.com/lachouettecoop/participation/archive/${VERSION}.tar.gz | tar -zxv --strip-components 1
-COPY .env /project/.env
+ADD .env /project/.env
 RUN npm install && npm run build
 
 FROM gatsbyjs/gatsby:latest
