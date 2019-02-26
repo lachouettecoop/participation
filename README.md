@@ -99,7 +99,8 @@ services:
       traefik.enable: "true"
       traefik.frontend.passHostHeader: "true"
       traefik.port: "80"
-      traefik.frontend.rule: "Host:participation.lachouettecoop.test"
+      traefik.frontend.rule: "Host:${PROXY_URL}"
+      traefik.frontend.auth.basic.users: "${PROXY_USER}:${PROXY_PASS_ENC}"
 
 networks:
   default:
