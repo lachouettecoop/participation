@@ -43,10 +43,69 @@ sa maintenance/reprise sur le long terme.
 **Cela n’est pas très compliqué !** Au lieu de faire `git commit`, exécutez
 `npm run commit` et laissez-vous guider !
 
-## Déploiement
-
-- `npm run build`
-
 ## Release
 
 - `GITHUB_TOKEN="xxxxxx" npm run release`
+
+## Déploiement
+
+### Manuel
+
+- `npm run build`
+
+Le contenu du dossier `public` peut alors être hébergé sur un hébergeur de site
+statique.
+
+### Docker
+
+Le dépôt contient un `Dockerfile` permettant de construire une image à partir du
+code source.
+
+Cette image accepte un argument `VERSION` à la construction permettant de
+construire le tag ou la branche souhaitée. Par défaut, la branche `master` est
+utilisée.
+
+> **IMPORTANT :** durant la construction de l’image, les variables
+> d’environnement rendues disponibles
+
+Voici un exemple d’usage :
+
+- créer un nouveau dossier et y entrer
+- récupérer le `Dockerfile` en local :
+
+```shell
+wget https://raw.githubusercontent.com/lachouettecoop/participation/master/Dockerfile
+```
+
+- créer un fichier `.env` contenant vos secrets (s’inspirer de `.env.dist`)
+- créer un fichier `docker-compose.yml` proche du suivant (essentiellement la
+  partie `services.web.build`)
+
+```yml
+version: "2.1"
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        - VERSION=master
+    restart: unless-stopped
+    networks:
+      default:
+      inverseproxy_shared:
+    labels:
+      traefik.docker.network: "inverseproxy_shared"
+      traefik.enable: "true"
+      traefik.frontend.passHostHeader: "true"
+      traefik.port: "80"
+      traefik.frontend.rule: "Host:participation.lachouettecoop.test"
+
+networks:
+  default:
+    internal: true
+    driver_opts:
+      encrypted: 1
+  inverseproxy_shared:
+    external: true
+```
