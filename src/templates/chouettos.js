@@ -74,7 +74,6 @@ export const query = graphql`
           nom
           prenom
           mail
-          nbtafok
 
           derniertafeffectue
           nbsemdepuisderniertaf
