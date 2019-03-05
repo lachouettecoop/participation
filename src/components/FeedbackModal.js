@@ -14,7 +14,7 @@ const FeedbackModal = () => {
 
   return (
     <Container>
-      <Box color="white">
+      <Box color="primary">
         <Heading mb={4}>Contacter le BdM au sujet de cette page</Heading>
         <Text as="p">
           Vous avez un doute, une question sur une information affichée sur

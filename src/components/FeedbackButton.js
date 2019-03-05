@@ -7,7 +7,7 @@ const FeedbackButton = () => {
   const [opened, setOpened] = useState(false);
   return (
     <Box
-      bg="red"
+      bg="paleviolet"
       css={`
         transition: all 0.1s ease-in;
         position: fixed;
@@ -33,8 +33,8 @@ const FeedbackButton = () => {
       `}
     >
       <Button
-        bg="red"
-        color="white"
+        bg="paleviolet"
+        color="primary"
         onClick={() => setOpened(!opened)}
         borderRadius={0}
         fontSize={3}

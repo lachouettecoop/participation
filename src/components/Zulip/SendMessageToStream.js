@@ -4,7 +4,7 @@ import { Button, Card, Flex, Text } from "rebass";
 import FormGroup from "../../ui/FormGroup";
 
 const Success = () => (
-  <Card bg="primary" p={4} my={4}>
+  <Card bg="primary" color="white" p={4} my={4}>
     <Flex alignContent="center">
       <Text fontSize={6} mr={4}>
         <FaCheckCircle />
@@ -19,7 +19,7 @@ const Success = () => (
 );
 
 const Error = ({ children }) => (
-  <Card bg="maroon" p={4} my={4}>
+  <Card bg="maroon" color="white" p={4} my={4}>
     <Flex alignContent="center">
       <Text fontSize={6} mr={4}>
         <FaTimesCircle />
@@ -94,7 +94,7 @@ const SendMessageToStream = ({ zulip, stream }) => {
         htmlFor="author"
         label="Envoyé par"
         help="Merci de nous dire qui vous êtes au cas où nous ayons plus de questions."
-        secondaryColor="navy"
+        secondaryColor="primary"
       >
         <input
           name="author"
@@ -112,7 +112,7 @@ const SendMessageToStream = ({ zulip, stream }) => {
           Un lien vers cette page sera automatiquement inclus dans le message,
           de manière à permettre d’accéder à la page posant problème.
         `}
-        secondaryColor="navy"
+        secondaryColor="primary"
       >
         <textarea
           cols={40}
