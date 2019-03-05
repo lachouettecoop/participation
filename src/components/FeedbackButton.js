@@ -24,11 +24,10 @@ const FeedbackButton = () => {
           : `
             transform: translateX(42%) rotate(-90deg);
             top: 50%;
-            right: 0;
+            right: -1px;
             opacity: 0.5;
             &:hover {
               opacity: 1;
-              transform: translateX(35%) rotate(-90deg);
             }
         `}
       `}
@@ -40,14 +39,18 @@ const FeedbackButton = () => {
         borderRadius={0}
         fontSize={3}
         width={opened ? 1 : "auto"}
+        mb={opened ? 4 : "auto"}
+        css={{
+          boxShadow: "-2px -2px 10px rgba(0, 0, 0, 0.8)"
+        }}
       >
         {opened ? (
           <Text textAlign="right" my={2} mr={4}>
             Fermer <FaWindowClose />
           </Text>
         ) : (
-          <Text p={3}>
-            Un problème 
+          <Text p={1}>
+            Une question, un problème 
             <FaQuestionCircle />
           </Text>
         )}
