@@ -5,8 +5,8 @@
 **BÊTA** Cette application est en cours d’évaluation et de tests par les groupes
 concernés.
 
-Cette application est une application minimaliste permettant de contrôler la
-participation d’un·e Chouettos à l’entrée du Lab. En scannant une carte il est
+Cette application est une application minimaliste permettant d’informer les
+Chouettos sur la participation à l’entrée du Lab. En scannant une carte il est
 possible de voir les informations clés de la participation de la personne.
 
 ## Documentation

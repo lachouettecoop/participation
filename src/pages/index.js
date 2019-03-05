@@ -24,7 +24,7 @@ const IndexPage = () => {
   `);
 
   return (
-    <Layout title="Contrôle de la Participation">
+    <Layout title="Information sur la Participation">
       <BrowseByBarcode />
       <BrowseByName chouettos={data.allChouettos.edges} />
     </Layout>
