@@ -22,12 +22,13 @@ const FeedbackButton = () => {
             overflow-y: auto;
           `
           : `
-            transform: translateX(42%) rotate(-90deg);
+            transform: translateX(44%) rotate(-90deg);
             top: 50%;
             right: -1px;
             opacity: 0.5;
             &:hover {
               opacity: 1;
+              transform: translateX(42%) rotate(-90deg);
             }
         `}
       `}
