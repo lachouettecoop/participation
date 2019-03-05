@@ -2,9 +2,12 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Text, Flex } from "rebass";
 
-import Layout from "../components/layout";
-import Barcode from "../ui/Barcode";
 import Page404 from "../pages/404";
+import Layout from "../components/layout";
+import DernierePiaf from "../components/Indicateurs/DernierePiaf";
+import ProchainePiaf from "../components/Indicateurs/ProchainePiaf";
+import RecapGlobal from "../components/Indicateurs/RecapGlobal";
+import Barcode from "../ui/Barcode";
 
 export default ({ data }) => {
   if (!data.allChouettos || !data.allGoogleSheetSuiviRow) return <Page404 />;
@@ -31,55 +34,23 @@ export default ({ data }) => {
       </Text>
 
       <Flex flexWrap="wrap" justifyContent="space-between" my={4}>
-        <Text
+        <DernierePiaf
+          date={piaf.derniertafeffectue}
+          nbSemaines={piaf.nbsemdepuisderniertaf}
           width={1 / 2}
           py={5}
-          color="white"
-          bg={piaf.nbsemdepuisderniertaf <= 4 ? "green" : "orange"}
-          textAlign="center"
-        >
-          <Text fontSize={8}>{piaf.nbsemdepuisderniertaf}</Text>
-          <Text>semaines depuis la dernière PIAF</Text>
-          <Text fontSize={4}>{`(${piaf.derniertafeffectue})`}</Text>
-        </Text>
-
-        <Text
-          width={1 / 2}
-          py={5}
-          color="white"
-          bg={piaf.prochaintaf === "-" ? "orange" : "green"}
-          textAlign="center"
-        >
-          <Text fontSize={8}>
-            {piaf.prochaintaf.replace(`/${new Date().getFullYear()}`, "")}
-          </Text>
-          <Text>pour votre prochaine PIAF</Text>
-          <Text fontSize={4}>
-            {piaf.prochaintaf === "-"
-              ? "Pensez à vous inscrire !"
-              : "Trop Chouette, merci ;-)"}
-          </Text>
-        </Text>
+        />
+        <ProchainePiaf date={piaf.prochaintaf} width={1 / 2} py={5} />
       </Flex>
-      <Text
+
+      <RecapGlobal
+        nbPiafAttendues={piaf.nbtafattendus}
+        nbPiafDepuis2017={piaf.nbtafeffectuesdepuisle2017}
+        nbPiafDepuis2018={piaf.nbtafeffectuesdepuisle2018}
+        mail={chouettos.mail}
         width={1}
         py={5}
-        color="white"
-        bg={piaf.nbtafok === "OK" ? "green" : "red"}
-        textAlign="center"
-      >
-        <Text fontSize={8}>
-          {piaf.nbtafeffectuesdepuisle2017} / {piaf.nbtafattendus}
-        </Text>
-        <Text>PIAF effectuées depuis le 06/10/2017 vs PIAF attendues</Text>
-        <Text fontSize={4}>{`dont ${
-          piaf.nbtafeffectuesdepuisle2018
-        } depuis le 01/09/2018`}</Text>
-
-        <Text fontSize={1} mt={4}>
-          Informations recoupées d’après votre adresse email : {chouettos.mail}
-        </Text>
-      </Text>
+      />
     </Layout>
   );
 };
