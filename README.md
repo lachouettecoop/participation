@@ -2,7 +2,8 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-**PROTOTYPE** Cette application n’est qu’un premier prototype
+**BÊTA** Cette application est en cours d’évaluation et de tests par les groupes
+concernés.
 
 Cette application est une application minimaliste permettant de contrôler la
 participation d’un·e Chouettos à l’entrée du Lab. En scannant une carte il est
