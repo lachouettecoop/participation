@@ -1,5 +1,6 @@
 import React from "react";
 import { Text } from "rebass";
+import Container from "./Container";
 
 const RecapGlobal = ({
   nbPiafDepuis2017,
@@ -9,8 +10,9 @@ const RecapGlobal = ({
   ...props
 }) => {
   return (
-    <Text
+    <Container
       {...props}
+      helpTo="/recap-global"
       width={1}
       py={5}
       color="white"
@@ -32,7 +34,7 @@ const RecapGlobal = ({
       <Text fontSize={1}>
         Informations recoupées d’après votre adresse email : {mail}
       </Text>
-    </Text>
+    </Container>
   );
 };
 

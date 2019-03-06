@@ -1,0 +1,58 @@
+import DernierePiaf from "../components/Indicateurs/DernierePiaf.js";
+import ImportantText from "../ui/ImportantText.js";
+import subWeeks from "date-fns/sub_weeks";
+import format from "date-fns/format";
+
+# Dernière PIAF
+
+Cet indicateur permet d’informer sur l’état de la dernière PIAF effectuée par la
+personne. Il affiche les informations suivantes :
+
+- nombre de semaines depuis la dernière PIAF
+- date de celle-ci
+
+Cette page présente les différents états possibles.
+
+## PIAF effectuée il y a moins de 4 semaines
+
+<DernierePiaf
+  nbSemaines={2}
+  date={format(subWeeks(new Date(), 2), "DD/MM/YYYY")}
+  width={1 / 2}
+  py={4}
+/>
+
+## PIAF effectuée il y a plus de 4 semaines
+
+<DernierePiaf
+  nbSemaines={6}
+  date={format(subWeeks(new Date(), 6), "DD/MM/YYYY")}
+  width={1 / 2}
+  py={4}
+/>
+
+<ImportantText mt={4}>
+  Action proposée : expliquer la régularité nécessaire des PIAF toutes les 4
+  semaines.
+</ImportantText>
+
+## PIAF jamais effectuée pour un nouveau Chouettos
+
+<DernierePiaf nbSemaines={3} date="-" width={1 / 2} py={4} />
+
+<ImportantText mt={4}>
+  Action proposée : souhaiter la bienvenue à ce nouveau venu !! Puis expliquer
+  le fonctionnement du planning, voire l’aider à se positionner sur sa première
+  PIAF…
+</ImportantText>
+
+## PIAF jamais effectuée pour un Chouettos inscrit il y a plus de 4 semaines
+
+<DernierePiaf
+  nbSemaines={20}
+  date={format(subWeeks(new Date(), 20), "DD/MM/YYYY")}
+  width={1 / 2}
+  py={4}
+/>
+
+<ImportantText mt={4}>Action proposée : on s’inscrit ?</ImportantText>

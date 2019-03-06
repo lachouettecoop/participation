@@ -1,0 +1,56 @@
+import RecapGlobal from "../components/Indicateurs/RecapGlobal.js";
+import ImportantText from "../ui/ImportantText.js";
+
+# Récapitulatif Global
+
+Cet indicateur permet d’informer sur l’état global de la participation effectuée
+par la personne, en mettant en avant ce qui serait attendu.
+
+Il affiche les informations suivantes :
+
+- nombre de PIAF effectuées par la personne depuis son inscription
+- nombre de PIAF attendues pour atteindre un équilibre (sur la base de **1 PIAF
+  toutes les 4 semaines**)
+- information sur le nombre de PIAF réalisées depuis la rentrée 2018
+- l’adresse email utilisée pour établir cette concordance
+
+Pour rappel : c’est l’adresse mail saisie sur le planning qui permet
+d’identifier le Chouettos. Si l’adresse mail n’est pas renseignée ou bien
+différente de celle donnée à l’inscription, alors l’outil ne fonctionne pas.
+
+Cette page présente les différents états possibles.
+
+## Une personne à jour
+
+<RecapGlobal
+  nbPiafDepuis2017={15}
+  nbPiafAttendues={15}
+  nbPiafDepuis2018={10}
+  mail="jean.tibou@example.com"
+  width={1 / 2}
+/>
+
+## Une personne en retard
+
+<RecapGlobal
+  nbPiafDepuis2017={3}
+  nbPiafAttendues={4}
+  nbPiafDepuis2018={3}
+  mail="jean.tibou@example.com"
+  width={1 / 2}
+/>
+
+<ImportantText mt={4}>
+  Action proposée : expliquer la régularité nécessaire des PIAF toutes les 4
+  semaines.
+</ImportantText>
+
+## Une personne en avance
+
+<RecapGlobal
+  nbPiafDepuis2017={42}
+  nbPiafAttendues={18}
+  nbPiafDepuis2018={23}
+  mail="jean.tibou@example.com"
+  width={1 / 2}
+/>

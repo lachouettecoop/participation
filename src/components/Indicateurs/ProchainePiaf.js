@@ -1,10 +1,12 @@
 import React from "react";
 import { Text } from "rebass";
+import Container from "./Container";
 
 const ProchainePiaf = ({ date, ...props }) => {
   return (
-    <Text
+    <Container
       {...props}
+      helpTo="/prochaine-piaf"
       color="white"
       bg={date === "-" ? "orange" : "green"}
       textAlign="center"
@@ -16,7 +18,7 @@ const ProchainePiaf = ({ date, ...props }) => {
       <Text fontSize={4}>
         {date === "-" ? "Pensez à vous inscrire !" : "Trop Chouette, merci ;-)"}
       </Text>
-    </Text>
+    </Container>
   );
 };
 
