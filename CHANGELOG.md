@@ -1,3 +1,25 @@
+# [0.4.0](https://github.com/lachouettecoop/participation/compare/0.3.0...0.4.0) (2019-03-06)
+
+
+### Bug Fixes
+
+* **ui:** correction de l’effet « déplacement » lors du survol du bouton de feedback ([514b7ff](https://github.com/lachouettecoop/participation/commit/514b7ff))
+
+
+### Features
+
+* **ui:** affichage d’un message plutôt que le compteur pour les nouveaux n’ayant pas PIAFé ([90fa1dd](https://github.com/lachouettecoop/participation/commit/90fa1dd)), closes [#19](https://github.com/lachouettecoop/participation/issues/19)
+* **ui:** ajout d’un bandeau « Beta test » pour indiquer l’état actuel de l’application ([12aba95](https://github.com/lachouettecoop/participation/commit/12aba95)), closes [#20](https://github.com/lachouettecoop/participation/issues/20)
+* **ui:** changement de la couleur de la fenêtre de contact (rouge -> violet pâle) ([642fced](https://github.com/lachouettecoop/participation/commit/642fced)), closes [#17](https://github.com/lachouettecoop/participation/issues/17)
+* **ui:** modification du texte et couleurs du récap global (bas) ([9cf4533](https://github.com/lachouettecoop/participation/commit/9cf4533)), closes [#18](https://github.com/lachouettecoop/participation/issues/18)
+* **ui:** renommage de l’outil en « Information sur la participation » plutot que « Controle » ([33c3aed](https://github.com/lachouettecoop/participation/commit/33c3aed)), closes [#14](https://github.com/lachouettecoop/participation/issues/14)
+* **ui:** renommage du bouton « Problème » en « Question, problème ? » ([6d246a9](https://github.com/lachouettecoop/participation/commit/6d246a9)), closes [#16](https://github.com/lachouettecoop/participation/issues/16)
+* ajout de liens vers une page d’explication pour chaque indicateur ([1813723](https://github.com/lachouettecoop/participation/commit/1813723)), closes [#7](https://github.com/lachouettecoop/participation/issues/7)
+* documentation des différents états et actions à proposer ([c5ca070](https://github.com/lachouettecoop/participation/commit/c5ca070)), closes [#7](https://github.com/lachouettecoop/participation/issues/7)
+* POC de l’affichage de la frise et documentation ([e028a1f](https://github.com/lachouettecoop/participation/commit/e028a1f)), closes [#13](https://github.com/lachouettecoop/participation/issues/13)
+
+
+
 # [0.3.0](https://github.com/lachouettecoop/participation/compare/0.2.0...0.3.0) (2019-02-27)
 
 

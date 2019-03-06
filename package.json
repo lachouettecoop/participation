@@ -2,7 +2,7 @@
   "name": "chouette-participation",
   "private": true,
   "description": "",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "",
   "dependencies": {
     "@mdx-js/mdx": "^0.20.2",
