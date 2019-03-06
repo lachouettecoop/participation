@@ -11,7 +11,7 @@ const FeedbackButton = () => {
       css={`
         transition: all 0.1s ease-in;
         position: fixed;
-        z-index: 1001;
+        z-index: 2000;
 
         ${opened
           ? `
