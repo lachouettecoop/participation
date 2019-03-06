@@ -8,6 +8,7 @@ import DernierePiaf from "../components/Indicateurs/DernierePiaf";
 import ProchainePiaf from "../components/Indicateurs/ProchainePiaf";
 import RecapGlobal from "../components/Indicateurs/RecapGlobal";
 import Barcode from "../ui/Barcode";
+import FriseCalendrier from "../components/Indicateurs/FriseCalendrier";
 
 export default ({ data }) => {
   if (!data.allChouettos || !data.allGoogleSheetSuiviRow) return <Page404 />;
@@ -42,6 +43,15 @@ export default ({ data }) => {
         />
         <ProchainePiaf date={piaf.prochaintaf} width={1 / 2} py={5} />
       </Flex>
+
+      {process.env.GATSBY_FEATURE_FRISE_ENABLED && (
+        <FriseCalendrier
+          dateDerniere={piaf.derniertafeffectue}
+          dateProchaine={piaf.prochaintaf}
+          width={1}
+          my={4}
+        />
+      )}
 
       <RecapGlobal
         nbPiafAttendues={piaf.nbtafattendus}
