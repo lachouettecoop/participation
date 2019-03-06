@@ -1,7 +1,53 @@
+import { Link } from "rebass";
 import ProchainePiaf from "../components/Indicateurs/ProchainePiaf.js";
+import ImportantText from "../ui/ImportantText.js";
+import addWeeks from "date-fns/add_weeks";
+import format from "date-fns/format";
 
 # Prochaine PIAF
 
-Lala
+Cet indicateur permet d’informer sur l’état de la prochaine PIAF effectuée par
+la personne. Cette information est récupérée depuis le
+[Planning du LAB](https://docs.google.com/spreadsheets/d/1QryWNsR34pRuUfz5HyQPEIlTDa9JiSp1kUorcU9merM/edit#gid=1816688434).
 
-<ProchainePiaf width={1 / 2} />
+**IMPORTANT : l’heure à laquelle les informations ont été récupérées est
+indiquée en bas de page.** Les modifications ne sont pas répercutées en temps
+réel.
+
+L’indicateur affiche les informations suivantes :
+
+- date de la prochaine PIAF à laquelle la personne est inscrite
+
+Cette page présente les différents états possibles.
+
+## Inscrit·e pour une PIAF
+
+<ProchainePiaf
+  date={format(addWeeks(new Date(), 2), "DD/MM/YYYY")}
+  width={1 / 2}
+  py={4}
+/>
+
+## Non inscrit·e pour une PIAF
+
+<ProchainePiaf date="-" width={1 / 2} py={4} />
+
+<ImportantText mt={4}>
+  Action proposée : s’inscrire au planning pour une PIAF.
+</ImportantText>
+
+## Inscrit·e pour une PIAF dans longtemps
+
+À noter : cet indicateur ne tient pas compte de la date à laquelle la PIAF aura
+lieu.
+
+<ProchainePiaf
+  date={format(addWeeks(new Date(), 10), "DD/MM/YYYY")}
+  width={1 / 2}
+  py={4}
+/>
+
+<ImportantText mt={4}>
+  Action proposée : s’inscrire au planning pour une PIAF si le{" "}
+  <Link href="/recap-global">récapitulatif global</Link> est en retard.
+</ImportantText>
