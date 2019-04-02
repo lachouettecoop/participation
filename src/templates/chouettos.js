@@ -54,8 +54,9 @@ export default ({ data }) => {
       )}
 
       <RecapGlobal
+        ok={piaf.nbtafok}
+        dateAdhesion={piaf.adhesionpriseencompte}
         nbPiafAttendues={piaf.nbtafattendus}
-        nbPiafDepuis2017={piaf.nbtafeffectuesdepuisle2017}
         nbPiafDepuis2018={piaf.nbtafeffectuesdepuisle2018}
         mail={chouettos.mail}
         width={1}
@@ -89,7 +90,8 @@ export const query = graphql`
           nbsemdepuisderniertaf
           prochaintaf
 
-          nbtafeffectuesdepuisle2017
+          nbtafok
+          adhesionpriseencompte
           nbtafeffectuesdepuisle2018
           nbtafattendus
         }

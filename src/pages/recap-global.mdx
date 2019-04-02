@@ -22,10 +22,27 @@ Cette page présente les différents états possibles.
 
 ## Une personne à jour
 
+### Inscrite depuis le début
+
 <RecapGlobal
-  nbPiafDepuis2017={15}
+  ok="OK"
+  dateAdhesion="01/01/2017"
   nbPiafAttendues={15}
-  nbPiafDepuis2018={10}
+  nbPiafDepuis2018={15}
+  mail="jean.tibou@example.com"
+  width={1 / 2}
+/>
+
+### Inscrite après le début des comptages
+
+Les comptages ont débuté le 01/09/2018.
+Aussi la date affichée au Chouettos est la date la plus récente entre le début du comptage et son adhésion.
+
+<RecapGlobal
+  ok="OK"
+  dateAdhesion="10/11/2018"
+  nbPiafAttendues={13}
+  nbPiafDepuis2018={13}
   mail="jean.tibou@example.com"
   width={1 / 2}
 />
@@ -33,7 +50,8 @@ Cette page présente les différents états possibles.
 ## Une personne en retard
 
 <RecapGlobal
-  nbPiafDepuis2017={3}
+  ok="KO"
+  dateAdhesion="10/11/2018"
   nbPiafAttendues={4}
   nbPiafDepuis2018={3}
   mail="jean.tibou@example.com"
@@ -48,9 +66,10 @@ Cette page présente les différents états possibles.
 ## Une personne en avance
 
 <RecapGlobal
-  nbPiafDepuis2017={42}
+  ok="OK"
+  dateAdhesion="01/01/2017"
   nbPiafAttendues={18}
-  nbPiafDepuis2018={23}
+  nbPiafDepuis2018={26}
   mail="jean.tibou@example.com"
   width={1 / 2}
 />
