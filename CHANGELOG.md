@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/lachouettecoop/participation/compare/0.5.0...0.5.1) (2019-04-02)
+
+
+### Bug Fixes
+
+* **build:** correction d’un bug empêchant la compilation statique ([8dbbb9e](https://github.com/lachouettecoop/participation/commit/8dbbb9e))
+
+
+
 # [0.5.0](https://github.com/lachouettecoop/participation/compare/0.4.0...0.5.0) (2019-04-02)
 
 
