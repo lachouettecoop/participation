@@ -1,3 +1,16 @@
+# [0.5.0](https://github.com/lachouettecoop/participation/compare/0.4.0...0.5.0) (2019-04-02)
+
+
+### Features
+
+* **ui:** ajout d’un bouton retour en haut de page lorsque l’on n’est pas sur l’accueil ([d3f563a](https://github.com/lachouettecoop/participation/commit/d3f563a)), closes [#15](https://github.com/lachouettecoop/participation/issues/15)
+* **ui:** ajout de la possibilité de rescanner une carte depuis une page Chouettos ([bf81a33](https://github.com/lachouettecoop/participation/commit/bf81a33)), closes [#8](https://github.com/lachouettecoop/participation/issues/8)
+* **ui:** mise à jour du 3ème indicateur : vert/rouge et une seule date ([e5f5965](https://github.com/lachouettecoop/participation/commit/e5f5965)), closes [#23](https://github.com/lachouettecoop/participation/issues/23)
+* **ui:** redirection automatique vers l’accueil au bout de 30s ([7cecea1](https://github.com/lachouettecoop/participation/commit/7cecea1)), closes [#8](https://github.com/lachouettecoop/participation/issues/8)
+* **ui:** utilisation d’un `.` pour séparateur de dates ([8111a20](https://github.com/lachouettecoop/participation/commit/8111a20)), closes [#24](https://github.com/lachouettecoop/participation/issues/24)
+
+
+
 # [0.4.0](https://github.com/lachouettecoop/participation/compare/0.3.0...0.4.0) (2019-03-06)
 
 
