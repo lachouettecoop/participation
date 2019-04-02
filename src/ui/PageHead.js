@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { Heading, Box, Text } from "rebass";
 import Container from "./Container";
+import { FaHome } from "react-icons/fa";
+
+import IconButton from "../ui/IconButton";
 import Logo from "../ui/Logo";
+
+import { Match } from "@reach/router";
 
 const PageHead = ({ title, children }) => (
   <Box
@@ -17,9 +22,21 @@ const PageHead = ({ title, children }) => (
     }}
   >
     <Text textAlign="center" mb={4}>
-      <Link to="/">
-        <Logo height={"20vh"} />
-      </Link>
+      <Match path="/">
+        {({ match: isHomePage }) =>
+          isHomePage ? (
+            <Logo height={"20vh"} />
+          ) : (
+            <Link to="/">
+              <Logo height={"10vh"} />
+              <br />
+              <IconButton icon={FaHome} variant="secondary">
+                Retour à l’accueil
+              </IconButton>
+            </Link>
+          )
+        }
+      </Match>
     </Text>
     <Container>
       <Heading as="h1">{title}</Heading>
