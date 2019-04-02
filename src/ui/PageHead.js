@@ -2,10 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { Heading, Box, Text } from "rebass";
-import Container from "./Container";
-import { FaHome } from "react-icons/fa";
 
-import IconButton from "../ui/IconButton";
+import Container from "./Container";
+import BackHome from "./BackHome";
 import Logo from "../ui/Logo";
 
 import { Match } from "@reach/router";
@@ -30,9 +29,11 @@ const PageHead = ({ title, children }) => (
             <Link to="/">
               <Logo height={"10vh"} />
               <br />
-              <IconButton icon={FaHome} variant="secondary">
-                Retour à l’accueil
-              </IconButton>
+              <Match path="/chouettos/:id">
+                {({ match: isChouettosPage }) => (
+                  <BackHome autoRedirect={isChouettosPage} />
+                )}
+              </Match>
             </Link>
           )
         }
