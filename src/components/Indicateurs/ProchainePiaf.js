@@ -12,7 +12,7 @@ const ProchainePiaf = ({ date, ...props }) => {
       textAlign="center"
     >
       <Text fontSize={8}>
-        {date.replace(`/${new Date().getFullYear()}`, "")}
+        {date.replace(`/${new Date().getFullYear()}`, "").replace(/\//gi, ".")}
       </Text>
       <Text>pour votre prochaine PIAF</Text>
       <Text fontSize={4}>
