@@ -4,11 +4,14 @@ import { Text, Flex } from "rebass";
 
 import Page404 from "../pages/404";
 import Layout from "../components/layout";
+
 import DernierePiaf from "../components/Indicateurs/DernierePiaf";
 import ProchainePiaf from "../components/Indicateurs/ProchainePiaf";
 import RecapGlobal from "../components/Indicateurs/RecapGlobal";
-import Barcode from "../ui/Barcode";
 import FriseCalendrier from "../components/Indicateurs/FriseCalendrier";
+import BrowseByBarcode from "../components/BrowseByBarcode";
+
+import Barcode from "../ui/Barcode";
 
 export default ({ data }) => {
   if (!data.allChouettos || !data.allGoogleSheetSuiviRow) return <Page404 />;
@@ -62,6 +65,8 @@ export default ({ data }) => {
         width={1}
         py={5}
       />
+
+      <BrowseByBarcode preventScroll mt={5} />
     </Layout>
   );
 };
