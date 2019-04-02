@@ -6,17 +6,19 @@ import { FaBarcode, FaArrowCircleRight } from "react-icons/fa";
 import IconButton from "../ui/IconButton";
 import FormGroup from "../ui/FormGroup";
 
-const BrowseByBarcode = () => {
+import "../polyfills/focus-options-polyfill";
+
+const BrowseByBarcode = ({ preventScroll = false, ...props }) => {
   const barcodeElement = useRef(null);
   const handleSubmitBarcode = e => {
     e.preventDefault();
     navigate(`/chouettos/${barcodeElement.current.value}`);
   };
 
-  useEffect(() => barcodeElement.current.focus());
+  useEffect(() => barcodeElement.current.focus({ preventScroll }));
 
   return (
-    <Box>
+    <Box {...props}>
       <Heading>Rechercher un·e Chouettos</Heading>
       <form onSubmit={handleSubmitBarcode}>
         <FormGroup htmlFor="barcode" label="Numéro de carte">
