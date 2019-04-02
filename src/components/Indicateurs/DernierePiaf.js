@@ -23,7 +23,7 @@ const DernierePiaf = ({ nbSemaines, date, ...props }) => {
     <Container {...commonProps} color="white" bg={ok ? "green" : "orange"}>
       <Text fontSize={8}>{nbSemaines}</Text>
       <Text>semaines depuis la dernière PIAF</Text>
-      <Text fontSize={4}>{`(${date})`}</Text>
+      <Text fontSize={4}>{`(${date.toString().replace(/\//gi, ".")})`}</Text>
     </Container>
   );
 };
