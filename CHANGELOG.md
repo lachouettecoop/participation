@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/lachouettecoop/participation/compare/0.5.1...0.5.2) (2019-04-03)
+
+
+### Bug Fixes
+
+* **ui:** mise en pause de la redirection auto lorsque le formulaire est ouvert ([d6453d0](https://github.com/lachouettecoop/participation/commit/d6453d0)), closes [#32](https://github.com/lachouettecoop/participation/issues/32)
+
+
+
 ## [0.5.1](https://github.com/lachouettecoop/participation/compare/0.5.0...0.5.1) (2019-04-02)
 
 
