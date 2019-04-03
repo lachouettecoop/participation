@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import { navigate } from "@reach/router";
+import React from "react";
+import { Location } from "@reach/router";
 import { FaQuestionCircle, FaWindowClose } from "react-icons/fa";
 import { Box, Button, Text } from "rebass";
 import FeedbackModal from "./FeedbackModal";
 
-const FeedbackButton = () => {
-  const [opened, setOpened] = useState(false);
+const OPENED_HASH = "#question";
+
+export const isOpened = location => location.hash === OPENED_HASH;
+
+const FeedbackButtonContent = ({ opened }) => {
   return (
     <Box
       bg="paleviolet"
@@ -36,7 +41,7 @@ const FeedbackButton = () => {
       <Button
         bg="paleviolet"
         color="primary"
-        onClick={() => setOpened(!opened)}
+        onClick={() => (opened ? navigate("#") : navigate(OPENED_HASH))}
         borderRadius={0}
         fontSize={3}
         width={opened ? 1 : "auto"}
@@ -60,5 +65,11 @@ const FeedbackButton = () => {
     </Box>
   );
 };
+
+const FeedbackButton = () => (
+  <Location>
+    {({ location }) => <FeedbackButtonContent opened={isOpened(location)} />}
+  </Location>
+);
 
 export default FeedbackButton;

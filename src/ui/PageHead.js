@@ -8,6 +8,7 @@ import BackHome from "./BackHome";
 import Logo from "../ui/Logo";
 
 import { Match } from "@reach/router";
+import { isOpened } from "../components/FeedbackButton";
 
 const PageHead = ({ title, children }) => (
   <Box
@@ -30,8 +31,10 @@ const PageHead = ({ title, children }) => (
               <Logo height={"10vh"} />
               <br />
               <Match path="/chouettos/:id">
-                {({ match: isChouettosPage }) => (
-                  <BackHome autoRedirect={isChouettosPage} />
+                {({ match: isChouettosPage, location }) => (
+                  <BackHome
+                    autoRedirect={isChouettosPage && !isOpened(location)}
+                  />
                 )}
               </Match>
             </Link>
