@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/lachouettecoop/participation/compare/0.5.2...0.6.0) (2019-09-04)
+
+
+### Features
+
+* ajout de l'information coopérateur ou non ([9ee68a1](https://github.com/lachouettecoop/participation/commit/9ee68a1)), closes [#34](https://github.com/lachouettecoop/participation/issues/34)
+
+
+
 ## [0.5.2](https://github.com/lachouettecoop/participation/compare/0.5.1...0.5.2) (2019-04-03)
 
 
