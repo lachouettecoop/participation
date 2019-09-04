@@ -54,6 +54,9 @@ module.exports = {
       resolve: `gatsby-source-ldap`
     },
     {
+      resolve: `gatsby-source-cooperateurs-csv`
+    },
+    {
       resolve: "gatsby-source-google-sheets-raw",
       options: {
         spreadsheetId: "1ZdhAb-EOV9FdMEgpEaIcRuWcRMtj3fRQi9xRHKnxhzo",

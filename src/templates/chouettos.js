@@ -5,6 +5,7 @@ import { Text, Flex } from "rebass";
 import Page404 from "../pages/404";
 import Layout from "../components/layout";
 
+import Cooperateur from "../components/Indicateurs/Cooperateur";
 import DernierePiaf from "../components/Indicateurs/DernierePiaf";
 import ProchainePiaf from "../components/Indicateurs/ProchainePiaf";
 import RecapGlobal from "../components/Indicateurs/RecapGlobal";
@@ -25,6 +26,11 @@ export default ({ data }) => {
         chouettos.firstname
       } ${chouettos.lastname.toUpperCase()},`}
     >
+      <Cooperateur
+        subscribedOn={data.cooperateur && data.cooperateur.subscribedOn}
+        mb={4}
+      />
+
       <Text as="p">
         <strong>Voici un récapitulatif de votre participation.</strong> Vous
         pouvez retrouver ces informations depuis l’espace membres (rubrique «
@@ -82,6 +88,10 @@ export const query = graphql`
           firstname
         }
       }
+    }
+
+    cooperateur(email: { eq: $mail }) {
+      subscribedOn
     }
 
     allGoogleSheetSuiviRow(filter: { mail: { eq: $mail } }) {
