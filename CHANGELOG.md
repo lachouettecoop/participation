@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/lachouettecoop/participation/compare/0.6.0...0.6.1) (2019-10-31)
+
+
+### Bug Fixes
+
+* correction de l'application suite à changement de nom de colonne dans le fichier de suivi ([115a74b](https://github.com/lachouettecoop/participation/commit/115a74b))
+
+
+
 # [0.6.0](https://github.com/lachouettecoop/participation/compare/0.5.2...0.6.0) (2019-09-04)
 
 
