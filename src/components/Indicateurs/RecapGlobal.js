@@ -36,7 +36,7 @@ const RecapGlobal = ({
         {nbPiafDepuis2018} / {nbPiafAttendues}
       </Text>
       <Text>
-        {nbPiafDepuis2018} PIAF effectuées et {nbPiafAttendues} PIAF attendues
+        {nbPiafDepuis2018} PIAF effectuées sur {nbPiafAttendues} PIAF attendues
       </Text>
       <Text mt={4} fontSize={4}>{`depuis le ${format(
         dateDebutComptage,
