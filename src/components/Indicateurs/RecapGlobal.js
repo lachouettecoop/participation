@@ -1,10 +1,9 @@
 import React from "react";
 import { Text } from "rebass";
 import Container from "./Container";
-import max from "date-fns/max";
 import format from "date-fns/format";
 
-const makeDateFromFrench = french => {
+const makeDateFromFrench = (french) => {
   const [d, m, Y] = french.split("/");
   return new Date(+Y, m - 1, +d);
 };
@@ -12,15 +11,16 @@ const makeDateFromFrench = french => {
 const RecapGlobal = ({
   ok,
   dateAdhesion,
-  nbPiafDepuis2018,
+  nbPiafEffectuees,
   nbPiafAttendues,
   mail,
   ...props
 }) => {
-  const dateDebutComptage = max(
-    makeDateFromFrench(dateAdhesion),
-    makeDateFromFrench("01/09/2018")
-  );
+  const dateDebutComptage = makeDateFromFrench(dateAdhesion);
+
+  let color = "green";
+  if (ok === "Chouette en alerte") color = "red";
+  else if (ok === "Chouette") color = "orange";
 
   return (
     <Container
@@ -29,14 +29,14 @@ const RecapGlobal = ({
       width={1}
       py={5}
       color="white"
-      bg={ok === "OK" ? "green" : "red"}
+      bg={color}
       textAlign="center"
     >
       <Text fontSize={8}>
-        {nbPiafDepuis2018} / {nbPiafAttendues}
+        {nbPiafEffectuees} / {nbPiafAttendues}
       </Text>
       <Text>
-        {nbPiafDepuis2018} PIAF effectuées sur {nbPiafAttendues} PIAF attendues
+        {nbPiafEffectuees} PIAF effectuées sur {nbPiafAttendues} PIAF attendues
       </Text>
       <Text mt={4} fontSize={4}>{`depuis le ${format(
         dateDebutComptage,

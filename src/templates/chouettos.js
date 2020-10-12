@@ -5,7 +5,6 @@ import { Text, Flex } from "rebass";
 import Page404 from "../pages/404";
 import Layout from "../components/layout";
 
-import Cooperateur from "../components/Indicateurs/Cooperateur";
 import DernierePiaf from "../components/Indicateurs/DernierePiaf";
 import ProchainePiaf from "../components/Indicateurs/ProchainePiaf";
 import RecapGlobal from "../components/Indicateurs/RecapGlobal";
@@ -15,10 +14,11 @@ import BrowseByBarcode from "../components/BrowseByBarcode";
 import Barcode from "../ui/Barcode";
 
 export default ({ data }) => {
-  if (!data.allChouettos || !data.allGoogleSheetSuiviRow) return <Page404 />;
+  if (!data.allChouettos || !data.allGoogleSheetSuivi2020Row)
+    return <Page404 />;
 
   const chouettos = data.allChouettos.edges[0].node;
-  const piaf = data.allGoogleSheetSuiviRow.edges[0].node;
+  const piaf = data.allGoogleSheetSuivi2020Row.edges[0].node;
 
   return (
     <Layout
@@ -26,15 +26,11 @@ export default ({ data }) => {
         chouettos.firstname
       } ${chouettos.lastname.toUpperCase()},`}
     >
-      <Cooperateur
-        subscribedOn={data.cooperateur && data.cooperateur.subscribedOn}
-        mb={4}
-      />
-
       <Text as="p">
-        <strong>Voici un récapitulatif de votre participation.</strong> Vous
-        pouvez retrouver ces informations depuis l’espace membres (rubrique «
-        Mon Compte »),
+        <strong>Voici un récapitulatif de votre participation.</strong>
+        {/* TEMPORAIREMENT PLUS POSSIBLE
+        Vous pouvez retrouver ces informations depuis l’espace membres (rubrique «
+        Mon Compte »), */}
       </Text>
 
       <Text>
@@ -45,28 +41,28 @@ export default ({ data }) => {
 
       <Flex flexWrap="wrap" justifyContent="space-between" my={4}>
         <DernierePiaf
-          date={piaf.derniertafeffectue}
-          nbSemaines={piaf.nbsemdepuisderniertaf}
+          date={piaf.dernierepiafeffectuee}
+          nbSemaines={piaf.nbsemdepuisdernierepiaf}
           width={1 / 2}
           py={5}
         />
-        <ProchainePiaf date={piaf.prochaintaf} width={1 / 2} py={5} />
+        <ProchainePiaf date={piaf.prochainepiaf} width={1 / 2} py={5} />
       </Flex>
 
       {process.env.GATSBY_FEATURE_FRISE_ENABLED && (
         <FriseCalendrier
-          dateDerniere={piaf.derniertafeffectue}
-          dateProchaine={piaf.prochaintaf}
+          dateDerniere={piaf.dernierepiafeffectuee}
+          dateProchaine={piaf.prochainepiaf}
           width={1}
           my={4}
         />
       )}
 
       <RecapGlobal
-        ok={piaf.nbpiafok}
-        dateAdhesion={piaf.adhesionpriseencompte}
-        nbPiafAttendues={piaf.nbtafattendus}
-        nbPiafDepuis2018={piaf.nbtafeffectuesdepuisle2018}
+        ok={piaf.statutpiaf}
+        dateAdhesion={piaf.debutdecompte}
+        nbPiafAttendues={piaf.nbpiafattendues}
+        nbPiafEffectuees={piaf.nbpiafeffectuees}
         mail={chouettos.mail}
         width={1}
         py={5}
@@ -90,25 +86,21 @@ export const query = graphql`
       }
     }
 
-    cooperateur(email: { eq: $mail }) {
-      subscribedOn
-    }
-
-    allGoogleSheetSuiviRow(filter: { mail: { eq: $mail } }) {
+    allGoogleSheetSuivi2020Row(filter: { email: { eq: $mail } }) {
       edges {
         node {
           nom
           prenom
-          mail
+          email
 
-          derniertafeffectue
-          nbsemdepuisderniertaf
-          prochaintaf
+          dernierepiafeffectuee
+          nbsemdepuisdernierepiaf
+          prochainepiaf
 
-          nbpiafok
-          adhesionpriseencompte
-          nbtafeffectuesdepuisle2018
-          nbtafattendus
+          statutpiaf
+          debutdecompte
+          nbpiafeffectuees
+          nbpiafattendues
         }
       }
     }

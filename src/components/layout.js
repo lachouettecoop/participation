@@ -10,7 +10,6 @@ import Seo from "./seo";
 import FeedbackButton from "./FeedbackButton";
 
 import "./layout.css";
-import AppStatusRibbon from "../ui/AppStatusRibbon";
 
 const Layout = ({ children, title }) => (
   <LCCTheme>
@@ -25,11 +24,10 @@ const Layout = ({ children, title }) => (
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <>
           <Seo title={title} />
           <FeedbackButton />
-          <AppStatusRibbon bg="yellow">Bêta Test</AppStatusRibbon>
           <PageHead title={title || data.site.siteMetadata.title} />
           <Container>
             <main>{children}</main>
@@ -43,7 +41,7 @@ const Layout = ({ children, title }) => (
                   month: "long",
                   year: "numeric",
                   hour: "2-digit",
-                  minute: "2-digit"
+                  minute: "2-digit",
                 })}
                 .
               </em>
@@ -56,7 +54,7 @@ const Layout = ({ children, title }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;
