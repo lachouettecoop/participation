@@ -2,8 +2,7 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-**BÊTA** Cette application est en cours d’évaluation et de tests par les groupes
-concernés.
+**STABLE** Cette application est utilisée à l'accueil du Magasin pour informer les Chouettos de leur état de participation.
 
 Cette application est une application minimaliste permettant d’informer les
 Chouettos sur la participation à l’entrée du Lab. En scannant une carte il est
