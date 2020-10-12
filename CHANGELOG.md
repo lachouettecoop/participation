@@ -1,3 +1,19 @@
+# [1.0.0](https://github.com/lachouettecoop/participation/compare/0.6.1...1.0.0) (2020-10-12)
+
+
+### Features
+
+* correction du wording ([a7d0e66](https://github.com/lachouettecoop/participation/commit/a7d0e66))
+* mise à jour avec la nouvelle feuille de Suivi en mode MAG ([9be20f0](https://github.com/lachouettecoop/participation/commit/9be20f0))
+
+
+### BREAKING CHANGES
+
+* L'adresse du Google Sheet de suivi est à modifier. Le format de celui-ci est
+différent de l'ancien. De plus, l'annuaire CSV des coopérateurs et coopératrices n'est plus utilisé.
+
+
+
 ## [0.6.1](https://github.com/lachouettecoop/participation/compare/0.6.0...0.6.1) (2019-10-31)
 
 
