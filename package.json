@@ -23,9 +23,7 @@
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-source-google-sheets-raw": "^1.1.2",
     "gatsby-transformer-sharp": "^2.1.13",
-    "got": "^9.6.0",
     "ldapjs": "^1.0.2",
-    "neat-csv": "^5.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -33,8 +31,7 @@
     "react-icons": "^3.4.0",
     "react-use": "^5.5.0",
     "rebass": "^3.0.1",
-    "styled-components": "^4.1.3",
-    "zulip-js": "^2.0.5"
+    "styled-components": "^4.1.3"
   },
   "keywords": [
     "gatsby"
