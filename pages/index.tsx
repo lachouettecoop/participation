@@ -68,6 +68,7 @@ export default function Home() {
     try {
       const data = await post("login_api", body)
       setResult(data)
+      localStorage.setItem("token", data.token)
     } catch (error) {
       alert(error)
     }
