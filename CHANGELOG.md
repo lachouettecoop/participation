@@ -1,3 +1,7 @@
+## [1.0.1](https://github.com/lachouettecoop/participation/compare/1.0.0...1.0.1) (2021-01-01)
+
+
+
 # [1.0.0](https://github.com/lachouettecoop/participation/compare/0.6.1...1.0.0) (2020-10-12)
 
 
