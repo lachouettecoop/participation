@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { Button, Card, Flex, Text } from "rebass";
-import FormGroup from "../../ui/FormGroup";
+import FormGroup from "../ui/FormGroup";
 
 const Success = () => (
   <Card bg="primary" color="white" p={4} my={4}>
@@ -35,7 +35,7 @@ const Error = ({ children }) => (
   </Card>
 );
 
-const SendMessageToStream = ({ zulip, stream }) => {
+const Contact = () => {
   const [subject, setSubject] = useState("");
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
@@ -45,24 +45,27 @@ const SendMessageToStream = ({ zulip, stream }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const params = {
-      to: stream,
-      type: "stream",
-      subject: `Participation : ${subject}`,
-      content:
-        `Message envoyé par ${author} depuis ${window.location.toString()}.` +
-        "\n---\n" +
-        message
-    };
+
+    const data = new FormData()
+    data.append("Module ", "Participation")
+    data.append("Objet ", subject)
+    data.append("Auteur·e ", author)
+    data.append("Origine ", window.location.toString())
+    data.append("Message ", message)
 
     setFormState({ state: "loading", message: "" });
-    zulip.messages.send(params).then(response => {
-      if (response.result === "success") {
-        setFormState({ state: "success", message: "" });
-      } else {
-        setFormState({ state: "error", message: response.msg });
-      }
-    });
+
+    fetch(process.env.GATSBY_CONTACT_FORM_ACTION, {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    }).then(() => {
+      setFormState({ state: "success", message: "" })
+    }).catch((error) => {
+      setFormState({ state: "error", message: error.message })
+    })
   };
 
   if (formState.state === "success") {
@@ -136,4 +139,4 @@ const SendMessageToStream = ({ zulip, stream }) => {
   );
 };
 
-export default SendMessageToStream;
+export default Contact;

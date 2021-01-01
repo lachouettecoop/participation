@@ -1,17 +1,9 @@
 import React from "react";
-import { FaSpinner } from "react-icons/fa";
 import { Box, Heading, Text } from "rebass";
-import { useZulipBot } from "../hooks/zulip";
 import Container from "../ui/Container";
-import SendMessageToStream from "./Zulip/SendMessageToStream";
+import Contact from "./Contact";
 
 const FeedbackModal = () => {
-  const zulip = useZulipBot(
-    process.env.GATSBY_ZULIP_URL,
-    process.env.GATSBY_ZULIP_BOT_EMAIL,
-    process.env.GATSBY_ZULIP_BOT_APIKEY
-  );
-
   return (
     <Container>
       <Box color="primary">
@@ -25,16 +17,7 @@ const FeedbackModal = () => {
         </Text>
 
         <hr />
-        {zulip ? (
-          <SendMessageToStream
-            zulip={zulip}
-            stream="Grp - Bureau des Membres"
-          />
-        ) : (
-          <Text>
-            <FaSpinner /> Chargement en cours…
-          </Text>
-        )}
+        <Contact />
       </Box>
     </Container>
   );
