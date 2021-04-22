@@ -1,76 +1,88 @@
 {
-  "name": "chouette-participation",
+  "name": "@lachouettecoop/participation",
+  "version": "0.1.0",
   "private": true,
-  "description": "",
-  "version": "1.0.1",
-  "author": "",
-  "dependencies": {
-    "@mdx-js/mdx": "^0.20.2",
-    "@mdx-js/tag": "^0.18.0",
-    "babel-plugin-styled-components": "^1.10.0",
-    "date-fns": "^1.30.1",
-    "dotenv": "^6.2.0",
-    "fuse.js": "^3.4.2",
-    "gatsby": "^2.1.5",
-    "gatsby-image": "^2.0.29",
-    "gatsby-mdx": "^0.4.2",
-    "gatsby-plugin-manifest": "^2.0.18",
-    "gatsby-plugin-offline": "^2.0.24",
-    "gatsby-plugin-react-helmet": "^3.0.6",
-    "gatsby-plugin-sharp": "^2.0.20",
-    "gatsby-plugin-styled-components": "^3.0.6",
-    "gatsby-plugin-web-font-loader": "^1.0.4",
-    "gatsby-source-filesystem": "^2.0.20",
-    "gatsby-source-google-sheets-raw": "^1.1.2",
-    "gatsby-transformer-sharp": "^2.1.13",
-    "ldapjs": "^1.0.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-helmet": "^5.2.0",
-    "react-icons": "^3.4.0",
-    "react-use": "^5.5.0",
-    "rebass": "^3.0.1",
-    "styled-components": "^4.1.3"
+  "author": {
+    "name": "Antoine Rousseau",
+    "email": "antoine@rousseau.im",
+    "url": "https://antoine.rousseau.im"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "commit": "git-cz",
-    "develop": "gatsby develop",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "release": "release-it"
+    "prepare": "husky install",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "lint-staged",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
   },
-  "release-it": {
-    "increment": "conventional:angular",
-    "scripts": {
-      "changelog": "npx conventional-changelog -p angular -u | tail -n +3",
-      "beforeStage": "npx conventional-changelog -p angular -i CHANGELOG.md -s"
-    },
-    "git": {
-      "commitMessage": "chore: release ${version}"
-    },
-    "github": {
-      "release": true
-    },
-    "npm": {
-      "publish": false
-    }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lachouettecoop/participation"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "bugs": {
+    "url": "https://github.com/lachouettecoop/participation/issues",
+    "email": "antoine@rousseau.im"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.15",
+    "@bugsnag/js": "^7.9.2",
+    "@bugsnag/plugin-react": "^7.9.2",
+    "@emotion/babel-plugin": "^11.3.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/standard-http-error": "^2.0.1",
+    "date-fns": "^2.21.1",
+    "gh-pages": "^3.1.0",
+    "graphql": "^15.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "standard-http-error": "^2.0.1",
+    "typescript": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "commitizen": "^3.0.7",
-    "conventional-changelog-cli": "^2.0.12",
-    "cz-conventional-changelog": "^2.1.0",
-    "release-it": "^10.1.0"
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
   }
 }
