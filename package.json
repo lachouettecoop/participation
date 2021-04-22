@@ -1,12 +1,7 @@
 {
   "name": "@lachouettecoop/participation",
   "version": "0.1.0",
-  "private": true,
-  "author": {
-    "name": "Antoine Rousseau",
-    "email": "antoine@rousseau.im",
-    "url": "https://antoine.rousseau.im"
-  },
+  "homepage": "https://lachouettecoop.github.io/participation",
   "scripts": {
     "prepare": "husky install",
     "start": "react-scripts start",

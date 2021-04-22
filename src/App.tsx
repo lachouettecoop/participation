@@ -23,7 +23,7 @@ const App = () => {
   const { auth } = useUser()
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/participation">
       <Header>
         <Logo />
         <Typography variant="h1">Participation</Typography>
