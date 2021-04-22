@@ -2,7 +2,7 @@ import type { User } from "src/types/model"
 
 import { createContext, useContext, useState, FC } from "react"
 
-import { LOGGED_IN_USER } from "src/queries"
+import { USER_BY_ID } from "src/queries"
 import apollo from "src/helpers/apollo"
 
 export interface LoginResponse {
@@ -23,7 +23,7 @@ export interface IUserContext<IsAuthenticated extends boolean = false> {
 
 const UserContext = createContext<IUserContext>({} as IUserContext)
 
-const STORAGE_KEY = "user"
+const STORAGE_KEY = "auth"
 
 export const getStoredUser = () => {
   const stored = localStorage.getItem(STORAGE_KEY)
@@ -38,7 +38,7 @@ export const UserProvider: FC = ({ children }) => {
 
   const login = async ({ userId, token }: LoginResponse) => {
     const result = await apollo.query<{ user: User }>({
-      query: LOGGED_IN_USER,
+      query: USER_BY_ID,
       variables: { id: `api/users/${userId}` },
     })
     const { user } = result.data

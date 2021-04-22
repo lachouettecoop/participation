@@ -1,10 +1,12 @@
 import { Redirect, Route, Switch, useLocation } from "react-router-dom"
-import { Button } from "@material-ui/core"
+import { Button, Container } from "@material-ui/core"
 import styled from "@emotion/styled/macro"
 
-import HomePage from "src/pages/authenticated/Home"
 import { getParams } from "src/helpers/request"
 import { useUser } from "src/providers/user"
+
+import HomePage from "src/pages/authenticated/Home"
+import UserPage from "src/pages/authenticated/User"
 
 const LogoutButton = styled(Button)`
   position: absolute;
@@ -18,15 +20,18 @@ const Authenticated = () => {
   const { logout } = useUser()
 
   return (
-    <>
+    <Container>
       <LogoutButton onClick={logout}>Déconnexion</LogoutButton>
       <Switch>
         <Route path="/home">
           <HomePage />
         </Route>
+        <Route path="/user/:code">
+          <UserPage />
+        </Route>
         <Redirect to={next || "/home"} />
       </Switch>
-    </>
+    </Container>
   )
 }
 

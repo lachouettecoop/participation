@@ -1,9 +1,10 @@
 import { gql } from "@apollo/client"
 
-export const LOGGED_IN_USER = gql`
-  query LOGGED_IN_USER($id: ID!) {
+export const USER_BY_ID = gql`
+  query($id: ID!) {
     user(id: $id) {
       id
+      enabled
       username
       rolesChouette {
         id
@@ -26,33 +27,36 @@ export const LOGGED_IN_USER = gql`
   }
 `
 
-export const SLOTS = gql`
-  query SLOTS($id: ID!) {
-    creneau(id: $id) {
-      titre
-      debut
-      fin
-      piafs {
+export const USER_BY_CODE = gql`
+  query($code: String!) {
+    users(codeBarre: $code) {
+      id
+      enabled
+      username
+      rolesChouette {
         id
-        statut
-        role {
-          id
-          roleUniqueId
-          libelle
-        }
-        piaffeur {
-          id
-          prenom
-          nom
-        }
+        roleUniqueId
+        libelle
+      }
+      nom
+      prenom
+      email
+      telephone
+      actif
+      statuts {
+        id
+        libelle
+        actif
+        dateDebut
+        dateFin
       }
     }
   }
 `
 
 export const PIAFS = gql`
-  query PIAFS($idPiaffeur: String, $after: String, $before: String, $statut: String) {
-    piafs(piaffeur: $idPiaffeur, creneau_debut: { after: $after, before: $before }, statut: $statut) {
+  query PIAFS($userId: String, $after: String, $before: String, $statut: String) {
+    piafs(piaffeur: $userId, creneau_debut: { after: $after, before: $before }, statut: $statut) {
       id
       statut
       creneau {
@@ -76,131 +80,10 @@ export const PIAFS = gql`
   }
 `
 
-export const PLANNING = gql`
-  query PLANNING($after: String, $before: String) {
-    creneaus(debut: { after: $after, before: $before }) {
-      id
-      debut
-      fin
-      titre
-      piafs {
-        id
-        statut
-        role {
-          id
-          roleUniqueId
-          libelle
-        }
-        piaffeur {
-          id
-          nom
-          prenom
-          email
-          telephone
-        }
-      }
-    }
-  }
-`
-
-export const REGISTRATION_UPDATE = gql`
-  mutation REGISTRATION_UPDATE($idPiaf: ID!, $idPiaffeur: String!, $statut: String!) {
-    updatePiaf(input: { id: $idPiaf, piaffeur: $idPiaffeur, statut: $statut }) {
-      piaf {
-        id
-        piaffeur {
-          id
-        }
-        statut
-      }
-    }
-  }
-`
-
-export const USER_UPDATE = gql`
-  mutation USER_UPDATE($idUser: ID!, $email: String, $telephone: String) {
-    updateUser(input: { id: $idUser, email: $email, telephone: $telephone }) {
-      user {
-        id
-        username
-        email
-        telephone
-      }
-    }
-  }
-`
-
-export const RESERVE_CREATE = gql`
-  mutation RESERVE_CREATE($user: String, $informations: String, $creneauGenerique: [String]) {
-    createReserve(input: { user: $user, informations: $informations, creneauGeneriques: $creneauGenerique }) {
-      reserve {
-        id
-        informations
-        user {
-          id
-          username
-        }
-        creneauGeneriques {
-          id
-          jour
-          frequence
-          heureDebut
-          heureFin
-        }
-      }
-    }
-  }
-`
-
-export const RESERVE_UPDATE = gql`
-  mutation RESERVE_UPDATE($id: ID!, $user: String, $informations: String, $creneauGenerique: [String]) {
-    updateReserve(input: { id: $id, user: $user, informations: $informations, creneauGeneriques: $creneauGenerique }) {
-      reserve {
-        id
-        informations
-        user {
-          id
-          username
-        }
-        creneauGeneriques {
-          id
-          jour
-          frequence
-          heureDebut
-          heureFin
-        }
-      }
-    }
-  }
-`
-
-export const RESERVE_USER = gql`
-  query RESERVE_USER($idUser: String) {
-    reserves(user: $idUser) {
-      id
-      informations
-      creneauGeneriques {
-        id
-      }
-    }
-  }
-`
-
-export const CRENEAUX_GENERIQUES = gql`
-  query CRENEAUX_GENERIQUES {
-    creneauGeneriques {
-      id
-      heureDebut
-      heureFin
-      titre
-      jour
-      actif
-      postes {
-        id
-        role {
-          libelle
-        }
-      }
+export const FILL = gql`
+  mutation($id: ID!) {
+    updatePiaf(input: { id: $id, pourvu: true }) {
+      clientMutationId
     }
   }
 `
