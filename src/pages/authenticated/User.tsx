@@ -1,19 +1,24 @@
 import type { User } from "src/types/model"
 
 import styled from "@emotion/styled/macro"
-import { Box, CircularProgress, Grid, Typography } from "@material-ui/core"
+import { Box, Grid, Typography } from "@material-ui/core"
 import { useQuery } from "@apollo/client"
 import { useParams } from "react-router"
 
 import { USER_BY_CODE } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
+import Loading from "src/components/Loading"
 import Piafs from "src/components/Piafs"
 
-const Loading = styled.div`
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const Status = styled(Grid)`
+  h3 {
+    &::first-letter {
+      text-transform: uppercase;
+    }
+    span {
+      font-size: 0.5em;
+    }
+  }
 `
 
 interface Params {
@@ -30,11 +35,7 @@ const UserPage = () => {
   const { loading, error, data } = useQuery<Results>(USER_BY_CODE, { variables: { code } })
 
   if (loading) {
-    return (
-      <Loading>
-        <CircularProgress />
-      </Loading>
-    )
+    return <Loading />
   }
 
   if (error) {
@@ -45,7 +46,7 @@ const UserPage = () => {
     return null
   }
 
-  const { enabled, id, prenom, nom, statuts } = data.users[0]
+  const { enabled, id, prenom, nom, statut, nbPiafEffectuees, nbPiafAttendues } = data.users[0]
 
   if (!enabled) {
     return null // we could also show a message
@@ -59,13 +60,14 @@ const UserPage = () => {
         </Typography>
       </Box>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={4}>
-          Votre statut : {statuts.find(({ actif }) => actif)?.libelle}
-        </Grid>
-        <Grid item xs={12} md={4}>
-          14/12
-        </Grid>
-        <Grid item xs={12} md={4}>
+        <Status item xs={12} md={6}>
+          <Typography variant="h2">Votre statut</Typography>
+          <Typography variant="h3">{statut}</Typography>
+          <Typography variant="h3">
+            {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAFs attendues</span>
+          </Typography>
+        </Status>
+        <Grid item xs={12} md={6}>
           <Piafs userId={id} />
         </Grid>
       </Grid>

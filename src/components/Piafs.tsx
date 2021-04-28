@@ -1,12 +1,14 @@
 import type { PIAF } from "src/types/model"
 
 import { useQuery } from "@apollo/client"
-import { CircularProgress } from "@material-ui/core"
-import { endOfDay, startOfDay } from "date-fns"
+import { Typography } from "@material-ui/core"
+import { addDays } from "date-fns"
 
 import { PIAFS } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
 import { queryDate } from "src/helpers/date"
+import Piaf from "src/components/Piaf"
+import Loading from "src/components/Loading"
 
 interface Results {
   piafs: PIAF[]
@@ -21,13 +23,13 @@ const Piafs = ({ userId }: Props) => {
   const { loading, error, data } = useQuery<Results>(PIAFS, {
     variables: {
       userId,
-      after: queryDate(startOfDay(now)),
-      before: queryDate(endOfDay(now)),
+      after: queryDate(now),
+      before: queryDate(addDays(now, 1)),
     },
   })
 
   if (loading) {
-    return <CircularProgress />
+    return <Loading height={150} />
   }
 
   if (error) {
@@ -38,7 +40,15 @@ const Piafs = ({ userId }: Props) => {
     return null
   }
 
-  return <div>{JSON.stringify(data)}</div>
+  return (
+    <div>
+      <Typography variant="h2">Vous êtes ici pour faire votre PIAF ?</Typography>
+      <p>Si oui, cliquez dessus pour valider votre présence :</p>
+      {data.piafs.map((piaf) => (
+        <Piaf piaf={piaf} key={piaf.id} />
+      ))}
+    </div>
+  )
 }
 
 export default Piafs

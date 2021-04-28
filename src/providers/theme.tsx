@@ -45,6 +45,7 @@ const THEME = createMuiTheme({
     },
     h3: {
       fontFamily: TITLE_FONT,
+      fontWeight: 500,
     },
     h4: {
       fontFamily: TITLE_FONT,
