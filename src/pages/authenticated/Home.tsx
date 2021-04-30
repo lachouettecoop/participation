@@ -46,7 +46,11 @@ const HomePage = () => {
     const { elements } = event.currentTarget
     const { value: lastname } = elements.namedItem("lastname") as HTMLInputElement
     const { value: firstname } = elements.namedItem("firstname") as HTMLInputElement
-    search({ variables: { lastname, firstname } })
+    if (lastname || firstname) {
+      search({ variables: { lastname, firstname } })
+    } else {
+      alert("Entrez au moins le début du nom ou du prénom.")
+    }
   }
 
   return (
