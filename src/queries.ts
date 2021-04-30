@@ -22,7 +22,6 @@ export const USER_BY_CODE = gql`
     users(codeBarre: $code) {
       id
       enabled
-      username
       rolesChouette {
         id
         roleUniqueId
@@ -32,10 +31,27 @@ export const USER_BY_CODE = gql`
       prenom
       email
       telephone
-      actif
       statut
       nbPiafEffectuees
       nbPiafAttendues
+    }
+  }
+`
+
+export const USER_SEARCH = gql`
+  query($lastname: String, $firstname: String) {
+    users(nom: $lastname, prenom: $firstname) {
+      id
+      codeBarre
+      enabled
+      rolesChouette {
+        id
+        roleUniqueId
+        libelle
+      }
+      nom
+      prenom
+      email
     }
   }
 `

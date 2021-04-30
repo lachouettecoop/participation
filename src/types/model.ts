@@ -35,7 +35,7 @@ export interface Reserve {
 export interface User {
   id: ID
   email: string
-  username: string
+  // username: string // unused
   rolesChouette: Role[]
   enabled: boolean
   civilite: string
@@ -47,7 +47,7 @@ export interface User {
   photo: string
   dateNaissance: string // ISO datetime
   notes: string
-  actif: boolean // what’s the difference with "enabled"?
+  actif: boolean // = part of a work group
   carteImprimee: boolean
   gh: boolean // grand hibou
   poste: Poste

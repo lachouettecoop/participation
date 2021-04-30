@@ -48,10 +48,6 @@ const UserPage = () => {
 
   const { enabled, id, prenom, nom, statut, nbPiafEffectuees, nbPiafAttendues } = data.users[0]
 
-  if (!enabled) {
-    return null // we could also show a message
-  }
-
   return (
     <>
       <Box my={4}>
@@ -59,18 +55,22 @@ const UserPage = () => {
           {prenom} {nom}
         </Typography>
       </Box>
-      <Grid container spacing={2}>
-        <Status item xs={12} md={6}>
-          <Typography variant="h2">Votre statut</Typography>
-          <Typography variant="h3">{statut}</Typography>
-          <Typography variant="h3">
-            {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAFs attendues</span>
-          </Typography>
-        </Status>
-        <Grid item xs={12} md={6}>
-          <Piafs userId={id} />
+      {enabled ? (
+        <Grid container spacing={2}>
+          <Status item xs={12} md={6}>
+            <Typography variant="h2">Votre statut</Typography>
+            <Typography variant="h3">{statut}</Typography>
+            <Typography variant="h3">
+              {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAFs attendues</span>
+            </Typography>
+          </Status>
+          <Grid item xs={12} md={6}>
+            <Piafs userId={id} />
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <Typography align="center">Utilisateur non activé</Typography>
+      )}
     </>
   )
 }
