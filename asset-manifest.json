@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/participation/static/js/main.6c96f1ae.chunk.js",
-    "main.js.map": "/participation/static/js/main.6c96f1ae.chunk.js.map",
-    "runtime-main.js": "/participation/static/js/runtime-main.c623b84f.js",
-    "runtime-main.js.map": "/participation/static/js/runtime-main.c623b84f.js.map",
-    "static/js/2.195ecef8.chunk.js": "/participation/static/js/2.195ecef8.chunk.js",
-    "static/js/2.195ecef8.chunk.js.map": "/participation/static/js/2.195ecef8.chunk.js.map",
-    "index.html": "/participation/index.html",
-    "static/js/2.195ecef8.chunk.js.LICENSE.txt": "/participation/static/js/2.195ecef8.chunk.js.LICENSE.txt",
-    "static/media/logo_white.6e9fcd91.svg": "/participation/static/media/logo_white.6e9fcd91.svg"
+    "main.js": "https://lachouettecoop.github.io/participation/static/js/main.09b3fca8.chunk.js",
+    "main.js.map": "https://lachouettecoop.github.io/participation/static/js/main.09b3fca8.chunk.js.map",
+    "runtime-main.js": "https://lachouettecoop.github.io/participation/static/js/runtime-main.915b4416.js",
+    "runtime-main.js.map": "https://lachouettecoop.github.io/participation/static/js/runtime-main.915b4416.js.map",
+    "static/js/2.195ecef8.chunk.js": "https://lachouettecoop.github.io/participation/static/js/2.195ecef8.chunk.js",
+    "static/js/2.195ecef8.chunk.js.map": "https://lachouettecoop.github.io/participation/static/js/2.195ecef8.chunk.js.map",
+    "index.html": "https://lachouettecoop.github.io/participation/index.html",
+    "static/js/2.195ecef8.chunk.js.LICENSE.txt": "https://lachouettecoop.github.io/participation/static/js/2.195ecef8.chunk.js.LICENSE.txt",
+    "static/media/logo_white.6e9fcd91.svg": "https://lachouettecoop.github.io/participation/static/media/logo_white.6e9fcd91.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c623b84f.js",
+    "static/js/runtime-main.915b4416.js",
     "static/js/2.195ecef8.chunk.js",
-    "static/js/main.6c96f1ae.chunk.js"
+    "static/js/main.09b3fca8.chunk.js"
   ]
 }
