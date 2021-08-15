@@ -8,7 +8,8 @@ import { useParams } from "react-router"
 import { USER_BY_CODE } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
 import Loading from "src/components/Loading"
-import Piafs from "src/components/Piafs"
+import ActivePiafs from "src/components/ActivePiafs"
+import UpcomingPiafs from "src/components/UpcomingPiafs"
 
 const Status = styled(Grid)`
   h3 {
@@ -65,7 +66,8 @@ const UserPage = () => {
             </Typography>
           </Status>
           <Grid item xs={12} md={6}>
-            <Piafs userId={id} />
+            <ActivePiafs userId={id} />
+            <UpcomingPiafs userId={id} />
           </Grid>
         </Grid>
       ) : (

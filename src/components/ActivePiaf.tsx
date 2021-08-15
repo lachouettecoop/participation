@@ -13,7 +13,7 @@ interface Props {
   piaf: PIAF
 }
 
-const Piaf = ({ piaf }: Props) => {
+const ActivePiaf = ({ piaf }: Props) => {
   const [loading, setLoading] = useState(false)
 
   const handleClick = async () => {
@@ -42,4 +42,4 @@ const Piaf = ({ piaf }: Props) => {
   )
 }
 
-export default Piaf
+export default ActivePiaf

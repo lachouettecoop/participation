@@ -1,13 +1,13 @@
 import type { PIAF } from "src/types/model"
 
 import { useQuery } from "@apollo/client"
-import { Typography } from "@material-ui/core"
+import { Typography, List, Box } from "@material-ui/core"
 import { addDays } from "date-fns"
 
 import { PIAFS } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
 import { queryDate } from "src/helpers/date"
-import Piaf from "src/components/Piaf"
+import UpcomingPiaf from "src/components/UpcomingPiaf"
 import Loading from "src/components/Loading"
 
 interface Results {
@@ -18,13 +18,13 @@ interface Props {
   userId: string
 }
 
-const Piafs = ({ userId }: Props) => {
+const UpcomingPiafs = ({ userId }: Props) => {
   const now = new Date()
   const { loading, error, data } = useQuery<Results>(PIAFS, {
     variables: {
       userId,
-      after: queryDate(now),
-      before: queryDate(addDays(now, 1)),
+      after: queryDate(addDays(now, 1)),
+      before: queryDate(addDays(now, 30)),
     },
   })
 
@@ -41,14 +41,15 @@ const Piafs = ({ userId }: Props) => {
   }
 
   return (
-    <div>
-      <Typography variant="h2">Vous êtes ici pour faire votre PIAF ?</Typography>
-      <p>Si oui, cliquez dessus pour valider votre présence :</p>
-      {data.piafs.map((piaf) => (
-        <Piaf piaf={piaf} key={piaf.id} />
-      ))}
-    </div>
+    <Box mb={4}>
+      <Typography variant="h2">Vos PIAFs suivantes</Typography>
+      <List>
+        {data.piafs.map((piaf) => (
+          <UpcomingPiaf piaf={piaf} key={piaf.id} />
+        ))}
+      </List>
+    </Box>
   )
 }
 
-export default Piafs
+export default UpcomingPiafs
