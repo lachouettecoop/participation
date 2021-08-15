@@ -7,6 +7,7 @@ import { useParams } from "react-router"
 
 import { USER_BY_CODE } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
+import BackButton from "src/components/BackButton"
 import Loading from "src/components/Loading"
 import ActivePiafs from "src/components/ActivePiafs"
 import UpcomingPiafs from "src/components/UpcomingPiafs"
@@ -51,6 +52,7 @@ const UserPage = () => {
 
   return (
     <>
+      <BackButton />
       <Box my={4}>
         <Typography variant="h2" align="center">
           {prenom} {nom}
