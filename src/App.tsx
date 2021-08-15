@@ -23,7 +23,7 @@ const App = () => {
   const { auth } = useUser()
 
   return (
-    <BrowserRouter basename="/participation">
+    <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
       <Header>
         <Logo />
         <Typography variant="h1">Participation</Typography>

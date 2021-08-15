@@ -61,3 +61,5 @@ jobs:
         REACT_APP_BUGSNAG_KEY: ${{ secrets.BUGSNAG_KEY }}
         REACT_APP_COMMIT: ${{ github.sha }}
         REACT_APP_AUTHOR: ${{ github.actor }}
+        PUBLIC_URL: https://lachouettecoop.github.io/participation
+        REACT_APP_BASENAME: /participation
