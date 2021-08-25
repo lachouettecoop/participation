@@ -36,7 +36,7 @@ const ActivePiaf = ({ piaf }: Props) => {
         disabled={piaf.pourvu || loading}
         endIcon={piaf.pourvu ? <Check /> : null}
       >
-        {formatTime(piaf.creneau.debut)}—{formatTime(piaf.creneau.fin)} : {piaf.creneau.titre}
+        De {formatTime(piaf.creneau.debut)} à {formatTime(piaf.creneau.fin)} : {piaf.creneau.titre}
       </Button>
     </Box>
   )

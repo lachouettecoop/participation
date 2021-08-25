@@ -8,7 +8,7 @@ const formatInFrench = (date: Date | number | string, pattern: string) => {
   return format(date, pattern, { locale: fr })
 }
 
-export const formatDate = (date: Date | number | string) => formatInFrench(date, "EEEE d MMM")
+export const formatDate = (date: Date | number | string) => formatInFrench(date, "EEEE d MMMM")
 
 export const formatTime = (date: Date | number | string) => formatInFrench(date, "HH:mm")
 

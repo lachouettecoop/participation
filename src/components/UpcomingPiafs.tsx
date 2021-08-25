@@ -24,7 +24,6 @@ const UpcomingPiafs = ({ userId }: Props) => {
     variables: {
       userId,
       after: queryDate(addDays(now, 1)),
-      before: queryDate(addDays(now, 30)),
     },
   })
 
@@ -36,17 +35,15 @@ const UpcomingPiafs = ({ userId }: Props) => {
     return <ErrorMessage error={error} />
   }
 
-  if (!data || !data.piafs.length) {
-    return null
-  }
-
   return (
     <Box mb={4}>
       <Typography variant="h2">Vos PIAFs suivantes</Typography>
       <List>
-        {data.piafs.map((piaf) => (
-          <UpcomingPiaf piaf={piaf} key={piaf.id} />
-        ))}
+        {data?.piafs.length ? (
+          data.piafs.map((piaf) => <UpcomingPiaf piaf={piaf} key={piaf.id} />)
+        ) : (
+          <p>Aucune PIAF à venir. Inscrivez-vous sur le planning !</p>
+        )}
       </List>
     </Box>
   )

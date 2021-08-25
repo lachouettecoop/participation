@@ -15,7 +15,7 @@ const UpcomingPiaf = ({ piaf }: Props) => {
 
   return (
     <ListItem disableGutters>
-      <ListItemText primary={`${formatDate(start)} ${formatTime(start)}—${formatTime(end)}`} secondary={title} />
+      <ListItemText primary={`${formatDate(start)} de ${formatTime(start)} à ${formatTime(end)}`} secondary={title} />
     </ListItem>
   )
 }
