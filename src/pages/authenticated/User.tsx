@@ -12,11 +12,22 @@ import Loading from "src/components/Loading"
 import ActivePiafs from "src/components/ActivePiafs"
 import UpcomingPiafs from "src/components/UpcomingPiafs"
 
+// TODO: use constants
+// https://github.com/lachouettecoop/chouette-admin-chouettos/blob/master/src/Controller/PlanningController.php#L99-L105
+const COLORS: Record<string, string> = {
+  "très chouette": "#2ECC40",
+  chouette: "#FF851B",
+  "chouette en alerte": "#FF4136",
+}
+
+const StatusText = styled(Typography)<{ $status: string }>`
+  color: ${({ $status }) => COLORS[$status]};
+  &::first-letter {
+    text-transform: uppercase;
+  }
+`
 const Status = styled(Grid)`
   h3 {
-    &::first-letter {
-      text-transform: uppercase;
-    }
     span {
       font-size: 0.5em;
     }
@@ -62,7 +73,9 @@ const UserPage = () => {
         <Grid container spacing={2}>
           <Status item xs={12} md={6}>
             <Typography variant="h2">Votre statut</Typography>
-            <Typography variant="h3">{statut}</Typography>
+            <StatusText variant="h3" $status={statut}>
+              {statut}
+            </StatusText>
             <Typography variant="h3">
               {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAFs attendues</span>
             </Typography>
