@@ -2,14 +2,15 @@ import type { FC } from "react"
 
 import { createMuiTheme, ThemeProvider as MUIThemeProvider, Theme as MUITheme } from "@material-ui/core/styles"
 import { CssBaseline } from "@material-ui/core"
+import { grey } from "@material-ui/core/colors"
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react/macro"
 
 // see public/index.html
 const TITLE_FONT = "Montserrat, sans-serif" // https://style.lachouettecoop.fr/#/typographie?a=titres-et-sous-titres
 const TEXT_FONT = "Cabin, sans-serif" // https://style.lachouettecoop.fr/#/typographie?a=texte
 
-const MAIN_COLOR = "#445448" // https://style.lachouettecoop.fr/#/couleurs
-const SECONDARY_COLOR = "#9e9e9e" // material grey 500
+const MAIN_COLOR = "#3A5447" // https://style.lachouettecoop.fr/#/couleurs
+const SECONDARY_COLOR = grey[500]
 
 declare module "@emotion/react" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
