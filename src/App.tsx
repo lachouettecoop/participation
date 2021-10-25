@@ -24,11 +24,11 @@ const App = () => {
   const { auth } = useUser()
 
   useEffect(() => {
-    const redirect = window.confirm(`ATTENTION ! Cet outil n'est pas encore officiel !
-Il affiche la participation en utilisant les données du nouvel outil planning, qui n'est pas encore utilisé.
-Cliquez sur OK pour être redirigé·e vers la page de l'espace membre sur laquelle se trouve le lien vers le planning actuel.`)
+    const ok = window.confirm(`ATTENTION ! Cet outil n'est pas encore officiel !
+Il affiche la participation en utilisant les données du nouvel outil planning, qui sera en service à partir du 29 novembre.
+Clique sur Annuler pour être redirigé·e vers le planning actuel.`)
 
-    if (redirect) {
+    if (!ok) {
       window.location.href = "https://espace-membres.lachouettecoop.fr/page/tafs"
     }
   }, [])
