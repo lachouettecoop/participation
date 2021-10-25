@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "https://lachouettecoop.github.io/participation/static/js/main.bab2fc89.chunk.js",
-    "main.js.map": "https://lachouettecoop.github.io/participation/static/js/main.bab2fc89.chunk.js.map",
+    "main.js": "https://lachouettecoop.github.io/participation/static/js/main.03cc2729.chunk.js",
+    "main.js.map": "https://lachouettecoop.github.io/participation/static/js/main.03cc2729.chunk.js.map",
     "runtime-main.js": "https://lachouettecoop.github.io/participation/static/js/runtime-main.915b4416.js",
     "runtime-main.js.map": "https://lachouettecoop.github.io/participation/static/js/runtime-main.915b4416.js.map",
     "static/js/2.7e28b52a.chunk.js": "https://lachouettecoop.github.io/participation/static/js/2.7e28b52a.chunk.js",
@@ -13,6 +13,6 @@
   "entrypoints": [
     "static/js/runtime-main.915b4416.js",
     "static/js/2.7e28b52a.chunk.js",
-    "static/js/main.bab2fc89.chunk.js"
+    "static/js/main.03cc2729.chunk.js"
   ]
 }
