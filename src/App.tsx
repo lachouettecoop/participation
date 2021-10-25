@@ -34,7 +34,7 @@ Cliquez sur OK pour être redirigé·e vers la page de l'espace membre sur laque
   }, [])
 
   return (
-    <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
+    <BrowserRouter>
       <Header>
         <Logo />
         <Typography variant="h1">Participation</Typography>
