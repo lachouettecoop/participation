@@ -12,6 +12,7 @@ import Loading from "src/components/Loading"
 import ActivePiafs from "src/components/ActivePiafs"
 import UpcomingPiafs from "src/components/UpcomingPiafs"
 
+// https://style.lachouettecoop.fr/#/couleurs
 // TODO: use constants
 // https://github.com/lachouettecoop/chouette-admin-chouettos/blob/master/src/Controller/PlanningController.php#L99-L105
 const COLORS: Record<string, string> = {
@@ -20,8 +21,8 @@ const COLORS: Record<string, string> = {
   "chouette en alerte": "#FF4136",
 }
 
-const StatusText = styled(Typography)<{ $status: string }>`
-  color: ${({ $status }) => COLORS[$status]};
+const StatusText = styled(Typography)<{ $status?: string }>`
+  color: ${({ $status, theme }) => ($status && COLORS[$status]) || theme.palette.secondary.main};
   &::first-letter {
     text-transform: uppercase;
   }
