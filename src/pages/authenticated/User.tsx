@@ -78,7 +78,7 @@ const UserPage = () => {
               {statut}
             </StatusText>
             <Typography variant="h3">
-              {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAFs attendues</span>
+              {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAF attendues</span>
             </Typography>
           </Status>
           <Grid item xs={12} md={6}>

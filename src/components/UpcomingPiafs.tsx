@@ -37,7 +37,7 @@ const UpcomingPiafs = ({ userId }: Props) => {
 
   return (
     <Box mb={4}>
-      <Typography variant="h2">Vos PIAFs suivantes</Typography>
+      <Typography variant="h2">Vos PIAF suivantes</Typography>
       <List>
         {data?.piafs.length ? (
           data.piafs.map((piaf) => <UpcomingPiaf piaf={piaf} key={piaf.id} />)
