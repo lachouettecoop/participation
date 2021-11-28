@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { BrowserRouter } from "react-router-dom"
 import styled from "@emotion/styled/macro"
 import { Typography } from "@material-ui/core"
@@ -22,16 +21,6 @@ const Header = styled.div`
 
 const App = () => {
   const { auth } = useUser()
-
-  useEffect(() => {
-    const ok = window.confirm(`ATTENTION ! Cet outil n'est pas encore officiel !
-Il affiche la participation en utilisant les données du nouvel outil planning, qui sera en service à partir du 29 novembre.
-Clique sur Annuler pour être redirigé·e vers le planning actuel.`)
-
-    if (!ok) {
-      window.location.href = "https://espace-membres.lachouettecoop.fr/page/tafs"
-    }
-  }, [])
 
   return (
     <BrowserRouter>
