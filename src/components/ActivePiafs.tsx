@@ -40,11 +40,13 @@ const ActivePiafs = ({ userId }: Props) => {
     return null
   }
 
+  const activePiafs = data.piafs.filter((p) => p.statut === "occupe")
+
   return (
     <Box mb={4}>
       <Typography variant="h2">Vous êtes ici pour faire votre PIAF ?</Typography>
       <p>Si oui, cliquez dessus pour valider votre présence :</p>
-      {data.piafs.map((piaf) => (
+      {activePiafs.map((piaf) => (
         <ActivePiaf piaf={piaf} key={piaf.id} />
       ))}
     </Box>

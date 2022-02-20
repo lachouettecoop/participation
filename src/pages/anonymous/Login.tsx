@@ -17,7 +17,7 @@ const LoginPage = () => {
       const auth: LoginResponse = await post("login_api", body)
       await login(auth)
     } catch (error) {
-      handleError(error)
+      handleError(error as Error)
     }
     setLoading(false)
   }

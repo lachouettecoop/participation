@@ -21,7 +21,7 @@ const ActivePiaf = ({ piaf }: Props) => {
     try {
       await apollo.mutate({ mutation: FILL, variables: { id: piaf.id } })
     } catch (error) {
-      handleError(error)
+      handleError(error as Error)
     }
     setLoading(false)
   }

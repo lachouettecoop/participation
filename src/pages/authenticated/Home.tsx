@@ -1,6 +1,6 @@
 import type { User } from "src/types/model"
 
-import { FormEvent } from "react"
+import { FormEvent, useEffect } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { useLazyQuery } from "@apollo/client"
 import { Button, Container, TextField, List, ListItem, ListItemText } from "@material-ui/core"
@@ -33,6 +33,14 @@ const HomePage = () => {
   const { auth } = useUser<true>()
   const { push } = useHistory()
   const [search, { loading, error, data }] = useLazyQuery<Result>(USER_SEARCH)
+
+  useEffect(() => {
+    //Go to the bottom of the screen to see the search results
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "auto",
+    })
+  }, [data])
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
