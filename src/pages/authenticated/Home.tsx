@@ -83,11 +83,14 @@ const HomePage = () => {
         </Button>
         {data && (
           <List>
-            {data.users.map(({ id, codeBarre, prenom, nom, email }) => (
-              <ListItem key={id} button component={Link} to={`/user/${codeBarre}`}>
-                <ListItemText primary={`${prenom} ${nom}`} secondary={email} />
-              </ListItem>
-            ))}
+            {data.users
+              .slice()
+              .sort((left, right) => (left.nom > right.nom ? 1 : -1))
+              .map(({ id, codeBarre, prenom, nom, email }) => (
+                <ListItem key={id} button component={Link} to={`/user/${codeBarre}`}>
+                  <ListItemText primary={`${prenom} ${nom}`} secondary={email} />
+                </ListItem>
+              ))}
           </List>
         )}
         {error && <ErrorMessage error={error} />}

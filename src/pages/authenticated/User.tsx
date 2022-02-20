@@ -1,16 +1,20 @@
 import type { User } from "src/types/model"
 
 import styled from "@emotion/styled/macro"
-import { Box, Grid, Typography } from "@material-ui/core"
+import { Box, Grid, Typography, Button } from "@material-ui/core"
 import { useQuery } from "@apollo/client"
 import { useParams } from "react-router"
 
-import { USER_BY_CODE } from "src/queries"
+import { USER_BY_CODE, USER_UPDATE_STOP_ABSENCE } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
 import BackButton from "src/components/BackButton"
 import Loading from "src/components/Loading"
 import ActivePiafs from "src/components/ActivePiafs"
 import UpcomingPiafs from "src/components/UpcomingPiafs"
+
+import apollo from "src/helpers/apollo"
+import { handleError } from "src/helpers/errors"
+import { useDialog } from "src/providers/dialog"
 
 // https://style.lachouettecoop.fr/#/couleurs
 // TODO: use constants
@@ -34,6 +38,9 @@ const Status = styled(Grid)`
     }
   }
 `
+const AbsenceText = styled(Typography)`
+  color: red;
+`
 
 interface Params {
   code: string
@@ -45,6 +52,7 @@ interface Results {
 
 const UserPage = () => {
   const { code } = useParams<Params>()
+  const { openQuestion } = useDialog()
 
   const { loading, error, data } = useQuery<Results>(USER_BY_CODE, { variables: { code } })
 
@@ -60,7 +68,30 @@ const UserPage = () => {
     return null
   }
 
-  const { enabled, id, prenom, nom, statut, nbPiafEffectuees, nbPiafAttendues } = data.users[0]
+  const {
+    enabled,
+    id,
+    prenom,
+    nom,
+    statut,
+    nbPiafEffectuees,
+    nbPiafAttendues,
+    absenceLongueDureeSansCourses,
+  } = data.users[0]
+
+  const handleClick = async () => {
+    const ok = await openQuestion(
+      "Tu souhaites revenir faire tes PIAF et tes courses ? Super ! Confirme le ici et l'effet sera immédiat. Pense à te rendre sur l’outil participation pour t’inscrire à nouveau sur des créneaux de PIAF."
+    )
+    if (!ok) {
+      return
+    }
+    try {
+      await apollo.mutate({ mutation: USER_UPDATE_STOP_ABSENCE, variables: { id: id } })
+    } catch (errorUpdate) {
+      handleError(errorUpdate as Error)
+    }
+  }
 
   return (
     <>
@@ -73,13 +104,27 @@ const UserPage = () => {
       {enabled ? (
         <Grid container spacing={2}>
           <Status item xs={12} md={6}>
-            <Typography variant="h2">Votre statut</Typography>
-            <StatusText variant="h3" $status={statut}>
-              {statut}
-            </StatusText>
+            {!absenceLongueDureeSansCourses && (
+              <>
+                <Typography variant="h2">Votre statut</Typography>
+                <StatusText variant="h3" $status={statut}>
+                  {statut}
+                </StatusText>
+              </>
+            )}
             <Typography variant="h3">
               {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAF attendues</span>
             </Typography>
+            <Box>
+              {absenceLongueDureeSansCourses && (
+                <>
+                  <AbsenceText variant="h4">Ma participation au magasin est actuellement en pause</AbsenceText>
+                  <Button variant="contained" color="primary" size="large" onClick={handleClick}>
+                    Je souhaite reprendre ma participation
+                  </Button>
+                </>
+              )}
+            </Box>
           </Status>
           <Grid item xs={12} md={6}>
             <ActivePiafs userId={id} />

@@ -55,6 +55,8 @@ export interface User {
   reserve: Reserve
   nbPiafEffectuees: number
   nbPiafAttendues: number
+  absenceLongueDureeCourses: boolean
+  absenceLongueDureeSansCourses: boolean
 }
 
 export interface Creneau {

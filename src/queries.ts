@@ -34,6 +34,7 @@ export const USER_BY_CODE = gql`
       statut
       nbPiafEffectuees
       nbPiafAttendues
+      absenceLongueDureeSansCourses
     }
   }
 `
@@ -91,6 +92,20 @@ export const FILL = gql`
         pourvu
       }
       clientMutationId
+    }
+  }
+`
+
+export const USER_UPDATE_STOP_ABSENCE = gql`
+  mutation($id: ID!) {
+    updateUser(input: { id: $id, absenceLongueDureeSansCourses: false }) {
+      user {
+        id
+        username
+        nom
+        prenom
+        absenceLongueDureeSansCourses
+      }
     }
   }
 `
