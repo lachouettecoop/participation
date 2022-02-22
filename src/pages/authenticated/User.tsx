@@ -118,9 +118,12 @@ const UserPage = () => {
             <Box>
               {absenceLongueDureeSansCourses && (
                 <>
-                  <AbsenceText variant="h4">Ma participation au magasin est actuellement en pause</AbsenceText>
+                  <AbsenceText variant="h5">
+                    Actuellement en pause de PIAF, pour pouvoir faire des courses, je dois cliquer sur le bouton
+                    ci-dessous
+                  </AbsenceText>
                   <Button variant="contained" color="primary" size="large" onClick={handleClick}>
-                    Je souhaite reprendre ma participation
+                    Je reprends ma participation
                   </Button>
                 </>
               )}
