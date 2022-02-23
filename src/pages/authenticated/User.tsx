@@ -81,7 +81,7 @@ const UserPage = () => {
 
   const handleClick = async () => {
     const ok = await openQuestion(
-      "Tu souhaites revenir faire tes PIAF et tes courses ? Super ! Confirme le ici et l'effet sera immédiat. Pense à te rendre sur l’outil participation pour t’inscrire à nouveau sur des créneaux de PIAF."
+      "Tu souhaites revenir faire tes PIAF et tes courses ? Super ! Confirme-le ici et l'effet sera immédiat. Pense à te rendre sur le planning pour t’inscrire à nouveau sur des créneaux de PIAF."
     )
     if (!ok) {
       return
