@@ -25,6 +25,8 @@ const COLORS: Record<string, string> = {
   "chouette en alerte": "#FF4136",
 }
 
+const MAX_DONE_PIAFS_DISPLAYED = 10
+
 const StatusText = styled(Typography)<{ $status?: string }>`
   color: ${({ $status, theme }) => ($status && COLORS[$status.toLowerCase()]) || theme.palette.secondary.main};
   &::first-letter {
@@ -79,6 +81,8 @@ const UserPage = () => {
     absenceLongueDureeSansCourses,
   } = data.users[0]
 
+  const done = nbPiafEffectuees > MAX_DONE_PIAFS_DISPLAYED ? `+${MAX_DONE_PIAFS_DISPLAYED}` : nbPiafEffectuees
+
   const handleClick = async () => {
     const ok = await openQuestion(
       "Tu souhaites revenir faire tes PIAF et tes courses ? Super ! Confirme-le ici et l'effet sera immédiat. Pense à te rendre sur le planning pour t’inscrire à nouveau sur des créneaux de PIAF."
@@ -113,7 +117,7 @@ const UserPage = () => {
               </>
             )}
             <Typography variant="h3">
-              {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAF attendues</span>
+              {done}/{nbPiafAttendues} <span>PIAF attendues</span>
             </Typography>
             <Box>
               {absenceLongueDureeSansCourses && (
