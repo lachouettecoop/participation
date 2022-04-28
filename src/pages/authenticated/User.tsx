@@ -4,17 +4,20 @@ import styled from "@emotion/styled/macro"
 import { Box, Grid, Typography, Button } from "@material-ui/core"
 import { useQuery } from "@apollo/client"
 import { useParams } from "react-router"
+import { useState } from "react"
 
-import { USER_BY_CODE, USER_UPDATE_STOP_ABSENCE } from "src/queries"
+import { USER_BY_CODE, USER_UPDATE_STOP_ABSENCE, USER_SET_AWAITING_PARTICIPATION_GROUP } from "src/queries"
 import { ErrorMessage } from "src/helpers/errors"
 import BackButton from "src/components/BackButton"
 import Loading from "src/components/Loading"
 import ActivePiafs from "src/components/ActivePiafs"
 import UpcomingPiafs from "src/components/UpcomingPiafs"
+import SendEmail from "src/components/SendEmail"
 
 import apollo from "src/helpers/apollo"
 import { handleError } from "src/helpers/errors"
 import { useDialog } from "src/providers/dialog"
+import { MAIL_COMMISSION_PARTICIPATION } from "src/utils/constants"
 
 // https://style.lachouettecoop.fr/#/couleurs
 // TODO: use constants
@@ -55,6 +58,7 @@ interface Results {
 const UserPage = () => {
   const { code } = useParams<Params>()
   const { openQuestion } = useDialog()
+  const [openSendEmailDialog, setOpenSendEmailDialog] = useState(false)
 
   const { loading, error, data } = useQuery<Results>(USER_BY_CODE, { variables: { code } })
 
@@ -79,9 +83,12 @@ const UserPage = () => {
     nbPiafEffectuees,
     nbPiafAttendues,
     absenceLongueDureeSansCourses,
+    attenteCommissionParticipation,
   } = data.users[0]
 
   const done = nbPiafEffectuees > MAX_DONE_PIAFS_DISPLAYED ? `+${MAX_DONE_PIAFS_DISPLAYED}` : nbPiafEffectuees
+
+  const user = data.users[0]
 
   const handleClick = async () => {
     const ok = await openQuestion(
@@ -97,6 +104,18 @@ const UserPage = () => {
     }
   }
 
+  const handleCloseSendEmailDialog = () => {
+    setOpenSendEmailDialog(false)
+  }
+
+  const handleOpenSendEmailDialog = () => {
+    setOpenSendEmailDialog(true)
+  }
+
+  const setUserAsAwaitingResult = async () => {
+    await apollo.mutate({ mutation: USER_SET_AWAITING_PARTICIPATION_GROUP, variables: { id: id } })
+  }
+
   return (
     <>
       <BackButton />
@@ -110,15 +129,24 @@ const UserPage = () => {
           <Status item xs={12} md={6}>
             {!absenceLongueDureeSansCourses && (
               <>
-                <Typography variant="h2">Votre statut</Typography>
-                <StatusText variant="h3" $status={statut}>
-                  {statut}
-                </StatusText>
+                <Typography variant="h2">Je suis</Typography>
+                {!attenteCommissionParticipation && (
+                  <StatusText variant="h3" $status={statut}>
+                    {statut}
+                  </StatusText>
+                )}
+                {attenteCommissionParticipation && (
+                  <StatusText variant="h2" $status={statut}>
+                    {"en attente de la décision de la commission de participation et je peux faire mes courses"}
+                  </StatusText>
+                )}
               </>
             )}
-            <Typography variant="h3">
-              {done}/{nbPiafAttendues} <span>PIAF attendues</span>
-            </Typography>
+            {!attenteCommissionParticipation && (
+              <Typography variant="h3">
+                {done}/{nbPiafAttendues} <span>PIAF attendues</span>
+              </Typography>
+            )}
             <Box>
               {absenceLongueDureeSansCourses && (
                 <>
@@ -132,11 +160,37 @@ const UserPage = () => {
                 </>
               )}
             </Box>
+            {MAIL_COMMISSION_PARTICIPATION &&
+              !user?.attenteCommissionParticipation &&
+              user?.statut.toLowerCase() == "chouette en alerte" && (
+                <>
+                  <Typography>
+                    Ce statut t’empêche de faire des courses. Si tu souhaites revenir faire tes courses et PIAF, tu peux
+                    saisir la commission participation qui examine les cas particuliers et recherche des solutions. Pour
+                    joindre la commission, tu peux cliquer sur le bouton ci-dessous
+                  </Typography>
+                  <Button variant="contained" color="primary" size="large" onClick={handleOpenSendEmailDialog}>
+                    joindre la commission
+                  </Button>
+                </>
+              )}
           </Status>
           <Grid item xs={12} md={6}>
             <ActivePiafs userId={id} />
             <UpcomingPiafs userId={id} />
           </Grid>
+          {user && MAIL_COMMISSION_PARTICIPATION && (
+            <SendEmail
+              show={openSendEmailDialog}
+              handleClose={handleCloseSendEmailDialog}
+              user={user}
+              title="Si tu confirmes ton souhait, la commission recevra un mail et prendra contact avec toi. Ton statut sera mis en attente de la décision de la commission. En attendant, tu pourras faire tes courses."
+              dialogContent="Tu peux laisser un commentaire si tu le souhaites."
+              emailAddress={MAIL_COMMISSION_PARTICIPATION}
+              emailSubject={`Saisie commission participation ${user.prenom} ${user.nom}`}
+              callback={setUserAsAwaitingResult}
+            />
+          )}
         </Grid>
       ) : (
         <Typography align="center">Utilisateur non activé</Typography>

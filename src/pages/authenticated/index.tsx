@@ -4,6 +4,7 @@ import styled from "@emotion/styled/macro"
 
 import { getParams } from "src/helpers/request"
 import { useUser } from "src/providers/user"
+import { useDialog } from "src/providers/dialog"
 
 import HomePage from "src/pages/authenticated/Home"
 import UserPage from "src/pages/authenticated/User"
@@ -18,10 +19,18 @@ const Authenticated = () => {
   const { search } = useLocation()
   const { next } = getParams(search)
   const { logout } = useUser()
+  const { openQuestion } = useDialog()
+
+  const confirmLogout = async () => {
+    const ok = await openQuestion("Es-tu sûr·e de vouloir fermer la session ?")
+    if (ok) {
+      logout()
+    }
+  }
 
   return (
     <Container>
-      <LogoutButton onClick={logout}>Déconnexion</LogoutButton>
+      <LogoutButton onClick={confirmLogout}>Déconnexion</LogoutButton>
       <Switch>
         <Route path="/home">
           <HomePage />

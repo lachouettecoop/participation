@@ -13,6 +13,7 @@ export const USER_BY_ID = gql`
       nom
       prenom
       email
+      codeBarre
     }
   }
 `
@@ -35,6 +36,8 @@ export const USER_BY_CODE = gql`
       nbPiafEffectuees
       nbPiafAttendues
       absenceLongueDureeSansCourses
+      codeBarre
+      attenteCommissionParticipation
     }
   }
 `
@@ -105,6 +108,20 @@ export const USER_UPDATE_STOP_ABSENCE = gql`
         nom
         prenom
         absenceLongueDureeSansCourses
+      }
+    }
+  }
+`
+
+export const USER_SET_AWAITING_PARTICIPATION_GROUP = gql`
+  mutation($id: ID!) {
+    updateUser(input: { id: $id, attenteCommissionParticipation: true }) {
+      user {
+        id
+        username
+        nom
+        prenom
+        attenteCommissionParticipation
       }
     }
   }
