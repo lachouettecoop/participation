@@ -28,6 +28,8 @@ const COLORS: Record<string, string> = {
   "chouette en alerte": "#FF4136",
 }
 
+const MAX_DONE_PIAFS_DISPLAYED = 10
+
 const StatusText = styled(Typography)<{ $status?: string }>`
   color: ${({ $status, theme }) => ($status && COLORS[$status.toLowerCase()]) || theme.palette.secondary.main};
   &::first-letter {
@@ -83,6 +85,8 @@ const UserPage = () => {
     absenceLongueDureeSansCourses,
     attenteCommissionParticipation,
   } = data.users[0]
+
+  const done = nbPiafEffectuees > MAX_DONE_PIAFS_DISPLAYED ? `+${MAX_DONE_PIAFS_DISPLAYED}` : nbPiafEffectuees
 
   const user = data.users[0]
 
@@ -140,7 +144,7 @@ const UserPage = () => {
             )}
             {!attenteCommissionParticipation && (
               <Typography variant="h3">
-                {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAF attendues</span>
+                {done}/{nbPiafAttendues} <span>PIAF attendues</span>
               </Typography>
             )}
             <Box>
