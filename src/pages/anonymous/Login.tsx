@@ -25,7 +25,7 @@ const LoginPage = () => {
   return (
     <Container maxWidth="xs">
       <form onSubmit={handleSubmit}>
-        <p>Cette application permet de gérer l’accueil du magasin. Vous devez être Grand Hibou pour vous connecter.</p>
+        <p>Cette application permet de gérer l’accueil du magasin. Il faut être Grand Hibou pour se connecter.</p>
         <TextField type="email" name="username" label="E-mail" fullWidth variant="outlined" />
         <TextField type="password" name="password" label="Mot de passe" fullWidth variant="outlined" margin="normal" />
         <Button type="submit" fullWidth size="large" variant="contained" color="primary" disabled={loading}>

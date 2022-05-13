@@ -44,7 +44,7 @@ export const UserProvider: FC = ({ children }) => {
     const { user } = result.data
 
     if (!user.rolesChouette.find(({ roleUniqueId }) => roleUniqueId === "GH")) {
-      alert(`${user.prenom}, vous n’êtes pas Grand Hibou`)
+      alert(`${user.prenom}, tu n’es pas Grand Hibou`)
       return
     }
 

@@ -18,6 +18,8 @@ interface Props {
   userId: string
 }
 
+const orderPiafsByDate = (left: PIAF, right: PIAF) => (left.creneau.debut > right.creneau.debut ? 1 : -1)
+
 const UpcomingPiafs = ({ userId }: Props) => {
   const now = new Date()
   const { loading, error, data } = useQuery<Results>(PIAFS, {
@@ -35,14 +37,16 @@ const UpcomingPiafs = ({ userId }: Props) => {
     return <ErrorMessage error={error} />
   }
 
+  const piafs = data?.piafs.filter(({ statut }) => statut !== "remplacement").sort(orderPiafsByDate)
+
   return (
     <Box mb={4}>
-      <Typography variant="h2">Vos PIAF suivantes</Typography>
+      <Typography variant="h2">Tes PIAF suivantes</Typography>
       <List>
-        {data?.piafs.length ? (
-          data.piafs.map((piaf) => <UpcomingPiaf piaf={piaf} key={piaf.id} />)
+        {piafs?.length ? (
+          piafs.map((piaf) => <UpcomingPiaf piaf={piaf} key={piaf.id} />)
         ) : (
-          <p>Aucune PIAF à venir. Inscrivez-vous sur le planning !</p>
+          <p>Aucune PIAF à venir. Inscris-toi sur le planning !</p>
         )}
       </List>
     </Box>

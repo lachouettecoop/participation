@@ -2,6 +2,7 @@ import type { PIAF } from "src/types/model"
 
 import { useQuery } from "@apollo/client"
 import { Box, Typography } from "@material-ui/core"
+import styled from "@emotion/styled/macro"
 import { addDays } from "date-fns"
 
 import { PIAFS } from "src/queries"
@@ -17,6 +18,10 @@ interface Results {
 interface Props {
   userId: string
 }
+
+const RedText = styled(Typography)`
+  color: red;
+`
 
 const ActivePiafs = ({ userId }: Props) => {
   const now = new Date()
@@ -41,14 +46,18 @@ const ActivePiafs = ({ userId }: Props) => {
   }
 
   const activePiafs = data.piafs.filter((p) => p.statut === "occupe")
+  if (!activePiafs.length) {
+    return null
+  }
 
   return (
     <Box mb={4}>
-      <Typography variant="h2">Vous êtes ici pour faire votre PIAF ?</Typography>
-      <p>Si oui, cliquez dessus pour valider votre présence :</p>
+      <Typography variant="h2">Tu es ici pour faire ta PIAF ?</Typography>
+      <p>Si oui, clique dessus pour valider ta présence :</p>
       {activePiafs.map((piaf) => (
         <ActivePiaf piaf={piaf} key={piaf.id} />
       ))}
+      <RedText variant="h6">La PIAF sera comptabilisée demain</RedText>
     </Box>
   )
 }

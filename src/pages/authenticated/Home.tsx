@@ -73,7 +73,7 @@ const HomePage = () => {
         </Button>
       </form>
       <form onSubmit={handleSearch}>
-        <p>Vous pouvez aussi chercher par nom, mais la ou le chouettos doit présenter sa carte de membre :</p>
+        <p>Tu peux aussi chercher par nom, mais la ou le chouettos doit présenter sa carte de membre :</p>
         <Row>
           <TextField name="lastname" label="Nom" variant="outlined" fullWidth />
           <TextField name="firstname" label="Prénom" variant="outlined" fullWidth />
