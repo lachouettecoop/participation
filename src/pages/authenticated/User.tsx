@@ -114,7 +114,7 @@ const UserPage = () => {
 
   return (
     <>
-      <BackButton />
+      {!openSendEmailDialog && <BackButton />}
       <Box my={4}>
         <Typography variant="h2" align="center">
           {prenom} {nom}
