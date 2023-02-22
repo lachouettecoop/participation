@@ -90,7 +90,13 @@ const App = () => {
                 <SwapHoriz color="primary" fontSize="small" /> Période d&apos;essai
               </MenuItemButton>
               <MenuItemButton
-                onClick={() => setIframeSrc({ url: "https://planning.lachouettecoop.fr", label: "Demande Produit" })}
+                onClick={() =>
+                  setIframeSrc({
+                    url:
+                      "https://docs.google.com/forms/d/e/1FAIpQLSezjphy6KurmbI-2P2-FC9DTXsnGPzO_Om87knU7Ykfd9Sbqw/viewform",
+                    label: "Demande Produit",
+                  })
+                }
               >
                 <Chat color="primary" fontSize="small" /> Demande Produit
               </MenuItemButton>
