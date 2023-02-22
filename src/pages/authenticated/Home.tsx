@@ -67,7 +67,15 @@ const HomePage = () => {
         Grand Hibou : {auth.user.prenom} {auth.user.nom}
       </p>
       <form onSubmit={handleSubmit}>
-        <TextField name="code" label="Code-barres" fullWidth variant="outlined" margin="normal" autoFocus />
+        <TextField
+          id="codeInput"
+          name="code"
+          label="Code-barres"
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          autoFocus
+        />
         <Button type="submit" variant="contained" color="primary" fullWidth size="large">
           Valider
         </Button>
