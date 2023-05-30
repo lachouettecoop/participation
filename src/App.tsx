@@ -77,7 +77,7 @@ const App = () => {
                   })
                 }
               >
-                <Assignment color="primary" fontSize="small" /> Réunion d&apos;acceuil
+                <Assignment color="primary" fontSize="small" /> Réunion d&apos;accueil
               </MenuItemButton>
               <MenuItemButton
                 onClick={() =>
