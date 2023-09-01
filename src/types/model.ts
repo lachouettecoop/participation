@@ -58,6 +58,7 @@ export interface User {
   absenceLongueDureeCourses: boolean
   absenceLongueDureeSansCourses: boolean
   attenteCommissionParticipation: boolean
+  nbDemiPiaf: number
 }
 
 export interface Creneau {

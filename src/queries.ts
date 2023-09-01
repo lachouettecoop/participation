@@ -38,6 +38,7 @@ export const USER_BY_CODE = gql`
       absenceLongueDureeSansCourses
       codeBarre
       attenteCommissionParticipation
+      nbDemiPiaf
     }
   }
 `

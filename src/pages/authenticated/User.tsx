@@ -72,6 +72,7 @@ const UserPage = () => {
     return null
   }
 
+  const user = data.users[0]
   const {
     enabled,
     id,
@@ -82,9 +83,8 @@ const UserPage = () => {
     nbPiafAttendues,
     absenceLongueDureeSansCourses,
     attenteCommissionParticipation,
-  } = data.users[0]
-
-  const user = data.users[0]
+  } = user
+  const nbPiafs = user?.nbDemiPiaf ? nbPiafEffectuees + 0.5 : nbPiafEffectuees
 
   const handleClick = async () => {
     const ok = await openQuestion(
@@ -140,7 +140,7 @@ const UserPage = () => {
             )}
             {!attenteCommissionParticipation && (
               <Typography variant="h3">
-                {nbPiafEffectuees}/{nbPiafAttendues} <span>PIAF attendues</span>
+                {nbPiafs}/{nbPiafAttendues} <span>PIAF attendues</span>
               </Typography>
             )}
             <Box>
